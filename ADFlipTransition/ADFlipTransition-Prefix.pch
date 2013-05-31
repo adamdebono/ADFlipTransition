@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'ADFlipTransition' target in the 'ADFlipTransition' project
+//
+
+#ifdef __OBJC__
+	#import <Foundation/Foundation.h>
+#endif
