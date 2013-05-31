@@ -10,6 +10,7 @@
 		A230220B175891BA00F247FF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A230220A175891BA00F247FF /* Foundation.framework */; };
 		A2302210175891BA00F247FF /* ADFlipTransition.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A230220F175891BA00F247FF /* ADFlipTransition.h */; };
 		A2302212175891BA00F247FF /* ADFlipTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = A2302211175891BA00F247FF /* ADFlipTransition.m */; };
+		A230221D1758C85D00F247FF /* UIView+Snapshot.m in Sources */ = {isa = PBXBuildFile; fileRef = A230221C1758C85D00F247FF /* UIView+Snapshot.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +32,8 @@
 		A230220E175891BA00F247FF /* ADFlipTransition-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ADFlipTransition-Prefix.pch"; sourceTree = "<group>"; };
 		A230220F175891BA00F247FF /* ADFlipTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ADFlipTransition.h; sourceTree = "<group>"; };
 		A2302211175891BA00F247FF /* ADFlipTransition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ADFlipTransition.m; sourceTree = "<group>"; };
+		A230221B1758C85D00F247FF /* UIView+Snapshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Snapshot.h"; sourceTree = "<group>"; };
+		A230221C1758C85D00F247FF /* UIView+Snapshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Snapshot.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +79,8 @@
 				A230220F175891BA00F247FF /* ADFlipTransition.h */,
 				A2302211175891BA00F247FF /* ADFlipTransition.m */,
 				A230220D175891BA00F247FF /* Supporting Files */,
+				A230221B1758C85D00F247FF /* UIView+Snapshot.h */,
+				A230221C1758C85D00F247FF /* UIView+Snapshot.m */,
 			);
 			path = ADFlipTransition;
 			sourceTree = "<group>";
@@ -140,6 +145,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A2302212175891BA00F247FF /* ADFlipTransition.m in Sources */,
+				A230221D1758C85D00F247FF /* UIView+Snapshot.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
