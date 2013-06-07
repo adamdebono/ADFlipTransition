@@ -28,6 +28,8 @@
 
 - (void)perform;
 - (void)performWithCompletion:(void (^)(void))completion;
+
+//reverse dismisses the destination view
 - (void)reverse;
 - (void)reverseWithCompletion:(void (^)(void))completion;
 
