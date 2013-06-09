@@ -31,6 +31,8 @@
 		A267E36D176409290059C236 /* ADFlippedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A267E36C176409290059C236 /* ADFlippedViewController.m */; };
 		A267E36F17640A780059C236 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A267E36E17640A780059C236 /* QuartzCore.framework */; };
 		A267E37217640B1F0059C236 /* UIColor+Expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = A267E37117640B1E0059C236 /* UIColor+Expanded.m */; };
+		A2C721B51764C1C500817817 /* CollectionViewStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2C721B41764C1C500817817 /* CollectionViewStoryboard.storyboard */; };
+		A2C721B81764C22000817817 /* ADDemoTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2C721B71764C22000817817 /* ADDemoTabViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +96,9 @@
 		A267E36E17640A780059C236 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		A267E37017640B1E0059C236 /* UIColor+Expanded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Expanded.h"; sourceTree = "<group>"; };
 		A267E37117640B1E0059C236 /* UIColor+Expanded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Expanded.m"; sourceTree = "<group>"; };
+		A2C721B41764C1C500817817 /* CollectionViewStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CollectionViewStoryboard.storyboard; sourceTree = "<group>"; };
+		A2C721B61764C22000817817 /* ADDemoTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADDemoTabViewController.h; sourceTree = "<group>"; };
+		A2C721B71764C22000817817 /* ADDemoTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADDemoTabViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +189,7 @@
 				A267E33E176406670059C236 /* ADAppDelegate.h */,
 				A267E33F176406670059C236 /* ADAppDelegate.m */,
 				A267E347176406680059C236 /* MainStoryboard.storyboard */,
+				A2C721B41764C1C500817817 /* CollectionViewStoryboard.storyboard */,
 				A267E336176406670059C236 /* Supporting Files */,
 				A267E35F176407BB0059C236 /* ADDemoViewController.h */,
 				A267E360176407BB0059C236 /* ADDemoViewController.m */,
@@ -193,6 +199,8 @@
 				A267E366176407E20059C236 /* ADDemoTableViewController.m */,
 				A267E36B176409290059C236 /* ADFlippedViewController.h */,
 				A267E36C176409290059C236 /* ADFlippedViewController.m */,
+				A2C721B61764C22000817817 /* ADDemoTabViewController.h */,
+				A2C721B71764C22000817817 /* ADDemoTabViewController.m */,
 			);
 			path = ADFlipTransitionDemo;
 			sourceTree = "<group>";
@@ -287,6 +295,7 @@
 				A267E344176406670059C236 /* Default@2x.png in Resources */,
 				A267E346176406680059C236 /* Default-568h@2x.png in Resources */,
 				A267E349176406680059C236 /* MainStoryboard.storyboard in Resources */,
+				A2C721B51764C1C500817817 /* CollectionViewStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,6 +325,7 @@
 				A267E367176407E20059C236 /* ADDemoTableViewController.m in Sources */,
 				A267E36D176409290059C236 /* ADFlippedViewController.m in Sources */,
 				A267E37217640B1F0059C236 /* UIColor+Expanded.m in Sources */,
+				A2C721B81764C22000817817 /* ADDemoTabViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -488,6 +498,7 @@
 				A267E35C176406680059C236 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -43,7 +43,7 @@
 	if ([[self cellNumberStepper] isHidden]) {
 		[self dismissFlipWithCompletion:NULL];
 	} else {
-		[self dismissFlipToIndexPath:[NSIndexPath indexPathForItem:[[self cellNumberStepper] value] inSection:0] withCompletion:NULL];
+		[self dismissFlipToIndexPath:[NSIndexPath indexPathForRow:[[self cellNumberStepper] value] inSection:0] withCompletion:NULL];
 	}
 }
 

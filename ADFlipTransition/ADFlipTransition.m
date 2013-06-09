@@ -57,6 +57,7 @@
 
 //***********//
 
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_6_0
 - (void)setSourceIndexPath:(NSIndexPath *)indexPath inCollectionViewConroller:(UICollectionViewController *)sourceViewController {
 	[self setSourceIndexPath:indexPath inCollectionViewConroller:sourceViewController withSnapshotImage:nil];
 }
@@ -73,6 +74,7 @@
 	UICollectionViewCell *cell = [[sourceViewController collectionView] cellForItemAtIndexPath:indexPath];
 	[self setSourceView:cell inViewController:sourceViewController withSnapshotImage:sourceImage];
 }
+#endif
 
 - (void)setSourceIndexPath:(NSIndexPath *)indexPath inTableViewConroller:(UITableViewController *)sourceViewController {
 	[self setSourceIndexPath:indexPath inTableViewConroller:sourceViewController withSnapshotImage:nil];
@@ -84,15 +86,12 @@
 }
 
 - (void)updateIndexPath:(NSIndexPath *)indexPath {
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_6_0
 	if ([[self sourceViewController] isKindOfClass:[UICollectionViewController class]]) {
-		/*UICollectionView *collectionView = [(UICollectionViewController *)[self sourceViewController] collectionView];
-		if (![[collectionView indexPathsForVisibleItems] containsObject:indexPath]) {
-			[collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally|UICollectionViewScrollPositionCenteredVertically animated:NO];
-			[collectionView reloadData];
-		}*/
-		
 		[self setSourceIndexPath:indexPath inCollectionViewConroller:(UICollectionViewController *)[self sourceViewController] withSnapshotImage:[self sourceImage]];
-	} else if ([[self sourceViewController] isKindOfClass:[UITableViewController class]]) {
+	} else
+#endif
+			if ([[self sourceViewController] isKindOfClass:[UITableViewController class]]) {
 		UITableView *tableView = [(UITableViewController *)[self sourceViewController] tableView];
 		if (![[tableView indexPathsForVisibleRows] containsObject:indexPath]) {
 			[tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
@@ -190,13 +189,6 @@
 	
 	CGRect destFrame;
 	CGRect srcFrame = [self actualRectInView:[self sourceView]];
-	/*if (UIInterfaceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation])) {
-		srcFrame = [self switchRectOrientation:srcFrame];
-		
-		if ([[UIApplication sharedApplication] statusBarStyle] == UIStatusBarStyleBlackOpaque) {
-			srcFrame.origin.x -= [[UIApplication sharedApplication] statusBarFrame].size.width;
-		}
-	}*/
 	
 	UIViewController *srcViewController = [self sourceViewController];
 	
@@ -302,10 +294,6 @@
 		srcViewController = [srcViewController parentViewController];
 	}
 	
-	//CGRect destFrame = [[[self destinationViewController] view] frame];
-	//if (UIInterfaceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation])) {
-	//	destFrame = [self switchRectOrientation:destFrame];
-	//}
 	CGRect destFrame;
 	if (CGRectEqualToRect([self destinationFrame], CGRectNull)) {
 		modal = YES;

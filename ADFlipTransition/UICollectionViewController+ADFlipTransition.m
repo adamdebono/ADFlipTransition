@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 Adam Debono. All rights reserved.
 //
 
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_6_0
+
 #import "UICollectionViewController+ADFlipTransition.h"
 
 #import "UIViewController+ADFlipTransition.h"
@@ -24,3 +26,5 @@
 }
 
 @end
+
+#endif
