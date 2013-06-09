@@ -10,6 +10,8 @@
 
 #import "UIView+Snapshot.h"
 
+@class UITransitionView;
+
 @interface ADFlipTransition ()
 
 @property (nonatomic) UIViewController *sourceViewController;
@@ -135,19 +137,44 @@
 }
 
 - (CGRect)actualRectInView:(UIView *)view {
+	Class transition = NSClassFromString(@"UITransitionView");
+	Class layoutContainer = NSClassFromString(@"UILayoutContainerView");
+	
 	CGRect frame = [view frame];
 	UIView *superview = [view superview];
-	while (superview) {
+	while (superview && ![superview isKindOfClass:transition] && ![superview isKindOfClass:layoutContainer]) {
 		CGRect newFrame = [[superview superview] convertRect:frame fromView:superview];
 		if (CGRectEqualToRect(newFrame, CGRectZero)) {
 			break;
 		}
 		frame = newFrame;
-		
+				
 		superview = [superview superview];
 	}
 	
 	return frame;
+}
+
+- (CGRect)fullScreenRect {
+	UIWindow *window = [[UIApplication sharedApplication] keyWindow];
+	
+	CGRect rect = [window frame];
+	if ([[UIApplication sharedApplication] statusBarStyle] == UIStatusBarStyleBlackOpaque) {
+		CGFloat height = UIInterfaceOrientationIsPortrait([[UIApplication sharedApplication] statusBarOrientation])?[[UIApplication sharedApplication] statusBarFrame].size.height:[[UIApplication sharedApplication] statusBarFrame].size.width;
+		
+		if (UIInterfaceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation])) {
+			rect = [self switchRectOrientation:rect];
+		}
+		
+		rect.origin.y += height;
+		rect.size.height -= height;
+	}
+	
+	return rect;
+}
+
+- (CGRect)switchRectOrientation:(CGRect)rect {
+	return CGRectMake(rect.origin.y, rect.origin.x, rect.size.height, rect.size.width);
 }
 
 #pragma mark - Animations
@@ -163,6 +190,13 @@
 	
 	CGRect destFrame;
 	CGRect srcFrame = [self actualRectInView:[self sourceView]];
+	/*if (UIInterfaceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation])) {
+		srcFrame = [self switchRectOrientation:srcFrame];
+		
+		if ([[UIApplication sharedApplication] statusBarStyle] == UIStatusBarStyleBlackOpaque) {
+			srcFrame.origin.x -= [[UIApplication sharedApplication] statusBarFrame].size.width;
+		}
+	}*/
 	
 	UIViewController *srcViewController = [self sourceViewController];
 	
@@ -175,8 +209,9 @@
 			srcViewController = [srcViewController parentViewController];
 		}
 		
-		destFrame = [[[self destinationViewController] view] frame];
+		destFrame = [self fullScreenRect];
 		
+		[[[self destinationViewController] view] setFrame:destFrame];
 		[[[self destinationViewController] view] setNeedsLayout];
 		[[[self destinationViewController] view] layoutIfNeeded];
 	} else {
@@ -267,7 +302,18 @@
 		srcViewController = [srcViewController parentViewController];
 	}
 	
-	CGRect destFrame = [[[self destinationViewController] view] frame];
+	//CGRect destFrame = [[[self destinationViewController] view] frame];
+	//if (UIInterfaceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation])) {
+	//	destFrame = [self switchRectOrientation:destFrame];
+	//}
+	CGRect destFrame;
+	if (CGRectEqualToRect([self destinationFrame], CGRectNull)) {
+		modal = YES;
+		destFrame = [self fullScreenRect];
+	} else {
+		modal = NO;
+		destFrame = [[[self destinationViewController] view] frame];
+	}
 	CGRect srcFrame = [self actualRectInView:[self sourceView]];
 	
 	//create the destination animation view
@@ -278,13 +324,9 @@
 	[[srcViewController view] addSubview:destView];
 	
 	//remove the destination view from screen
-	if (CGRectEqualToRect([self destinationFrame], CGRectNull)) {
-		modal = YES;
-		
+	if (modal) {
 		[[self destinationViewController] dismissViewControllerAnimated:NO completion:NULL];
 	} else {
-		modal = NO;
-		
 		[[[self destinationViewController] view] removeFromSuperview];
 		[[self destinationViewController] willMoveToParentViewController:nil];
 		[[self destinationViewController] removeFromParentViewController];
