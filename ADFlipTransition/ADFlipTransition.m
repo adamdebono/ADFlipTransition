@@ -141,8 +141,9 @@
 		}
 		
 		destFrame = [[srcViewController view] bounds];
-		//destFrame = [[[UIApplication sharedApplication] keyWindow] frame];
-		//[[[self destinationViewController] view] setFrame:destFrame];
+		
+		[[[self destinationViewController] view] setNeedsLayout];
+		[[[self destinationViewController] view] layoutIfNeeded];
 	} else {
 		modal = NO;
 		
