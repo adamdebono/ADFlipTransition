@@ -14,7 +14,34 @@
 		A267E3241763FBCE0059C236 /* UIViewController+ADFlipTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = A267E3231763FBCE0059C236 /* UIViewController+ADFlipTransition.m */; };
 		A267E327176400450059C236 /* UICollectionViewController+ADFlipTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = A267E326176400450059C236 /* UICollectionViewController+ADFlipTransition.m */; };
 		A267E32A1764048D0059C236 /* UITableViewController+ADFlipTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = A267E3291764048D0059C236 /* UITableViewController+ADFlipTransition.m */; };
+		A267E331176406670059C236 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A267E330176406670059C236 /* UIKit.framework */; };
+		A267E332176406670059C236 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A230220A175891BA00F247FF /* Foundation.framework */; };
+		A267E334176406670059C236 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A267E333176406670059C236 /* CoreGraphics.framework */; };
+		A267E33A176406670059C236 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A267E338176406670059C236 /* InfoPlist.strings */; };
+		A267E33C176406670059C236 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A267E33B176406670059C236 /* main.m */; };
+		A267E340176406670059C236 /* ADAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A267E33F176406670059C236 /* ADAppDelegate.m */; };
+		A267E342176406670059C236 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = A267E341176406670059C236 /* Default.png */; };
+		A267E344176406670059C236 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A267E343176406670059C236 /* Default@2x.png */; };
+		A267E346176406680059C236 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A267E345176406680059C236 /* Default-568h@2x.png */; };
+		A267E349176406680059C236 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A267E347176406680059C236 /* MainStoryboard.storyboard */; };
+		A267E361176407BB0059C236 /* ADDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A267E360176407BB0059C236 /* ADDemoViewController.m */; };
+		A267E364176407D00059C236 /* ADDemoCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A267E363176407D00059C236 /* ADDemoCollectionViewController.m */; };
+		A267E367176407E20059C236 /* ADDemoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A267E366176407E20059C236 /* ADDemoTableViewController.m */; };
+		A267E36A176408E20059C236 /* libADFlipTransition.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A2302207175891BA00F247FF /* libADFlipTransition.a */; };
+		A267E36D176409290059C236 /* ADFlippedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A267E36C176409290059C236 /* ADFlippedViewController.m */; };
+		A267E36F17640A780059C236 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A267E36E17640A780059C236 /* QuartzCore.framework */; };
+		A267E37217640B1F0059C236 /* UIColor+Expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = A267E37117640B1E0059C236 /* UIColor+Expanded.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A267E368176408DC0059C236 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A23021FF175891BA00F247FF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A2302206175891BA00F247FF;
+			remoteInfo = ADFlipTransition;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		A2302205175891BA00F247FF /* CopyFiles */ = {
@@ -43,6 +70,30 @@
 		A267E326176400450059C236 /* UICollectionViewController+ADFlipTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UICollectionViewController+ADFlipTransition.m"; sourceTree = "<group>"; };
 		A267E3281764048D0059C236 /* UITableViewController+ADFlipTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewController+ADFlipTransition.h"; sourceTree = "<group>"; };
 		A267E3291764048D0059C236 /* UITableViewController+ADFlipTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewController+ADFlipTransition.m"; sourceTree = "<group>"; };
+		A267E32F176406670059C236 /* ADFlipTransitionDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ADFlipTransitionDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A267E330176406670059C236 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A267E333176406670059C236 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A267E337176406670059C236 /* ADFlipTransitionDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ADFlipTransitionDemo-Info.plist"; sourceTree = "<group>"; };
+		A267E339176406670059C236 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A267E33B176406670059C236 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A267E33D176406670059C236 /* ADFlipTransitionDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ADFlipTransitionDemo-Prefix.pch"; sourceTree = "<group>"; };
+		A267E33E176406670059C236 /* ADAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ADAppDelegate.h; sourceTree = "<group>"; };
+		A267E33F176406670059C236 /* ADAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ADAppDelegate.m; sourceTree = "<group>"; };
+		A267E341176406670059C236 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		A267E343176406670059C236 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		A267E345176406680059C236 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		A267E348176406680059C236 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		A267E35F176407BB0059C236 /* ADDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADDemoViewController.h; sourceTree = "<group>"; };
+		A267E360176407BB0059C236 /* ADDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADDemoViewController.m; sourceTree = "<group>"; };
+		A267E362176407D00059C236 /* ADDemoCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADDemoCollectionViewController.h; sourceTree = "<group>"; };
+		A267E363176407D00059C236 /* ADDemoCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADDemoCollectionViewController.m; sourceTree = "<group>"; };
+		A267E365176407E20059C236 /* ADDemoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADDemoTableViewController.h; sourceTree = "<group>"; };
+		A267E366176407E20059C236 /* ADDemoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADDemoTableViewController.m; sourceTree = "<group>"; };
+		A267E36B176409290059C236 /* ADFlippedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADFlippedViewController.h; sourceTree = "<group>"; };
+		A267E36C176409290059C236 /* ADFlippedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADFlippedViewController.m; sourceTree = "<group>"; };
+		A267E36E17640A780059C236 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		A267E37017640B1E0059C236 /* UIColor+Expanded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Expanded.h"; sourceTree = "<group>"; };
+		A267E37117640B1E0059C236 /* UIColor+Expanded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Expanded.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +105,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A267E32C176406670059C236 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A267E36A176408E20059C236 /* libADFlipTransition.a in Frameworks */,
+				A267E334176406670059C236 /* CoreGraphics.framework in Frameworks */,
+				A267E332176406670059C236 /* Foundation.framework in Frameworks */,
+				A267E36F17640A780059C236 /* QuartzCore.framework in Frameworks */,
+				A267E331176406670059C236 /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -61,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				A230220C175891BA00F247FF /* ADFlipTransition */,
+				A267E335176406670059C236 /* ADFlipTransitionDemo */,
 				A2302209175891BA00F247FF /* Frameworks */,
 				A2302208175891BA00F247FF /* Products */,
 			);
@@ -70,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				A2302207175891BA00F247FF /* libADFlipTransition.a */,
+				A267E32F176406670059C236 /* ADFlipTransitionDemo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -77,7 +142,10 @@
 		A2302209175891BA00F247FF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A267E36E17640A780059C236 /* QuartzCore.framework */,
 				A230220A175891BA00F247FF /* Foundation.framework */,
+				A267E330176406670059C236 /* UIKit.framework */,
+				A267E333176406670059C236 /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -108,6 +176,41 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		A267E335176406670059C236 /* ADFlipTransitionDemo */ = {
+			isa = PBXGroup;
+			children = (
+				A267E37017640B1E0059C236 /* UIColor+Expanded.h */,
+				A267E37117640B1E0059C236 /* UIColor+Expanded.m */,
+				A267E33E176406670059C236 /* ADAppDelegate.h */,
+				A267E33F176406670059C236 /* ADAppDelegate.m */,
+				A267E347176406680059C236 /* MainStoryboard.storyboard */,
+				A267E336176406670059C236 /* Supporting Files */,
+				A267E35F176407BB0059C236 /* ADDemoViewController.h */,
+				A267E360176407BB0059C236 /* ADDemoViewController.m */,
+				A267E362176407D00059C236 /* ADDemoCollectionViewController.h */,
+				A267E363176407D00059C236 /* ADDemoCollectionViewController.m */,
+				A267E365176407E20059C236 /* ADDemoTableViewController.h */,
+				A267E366176407E20059C236 /* ADDemoTableViewController.m */,
+				A267E36B176409290059C236 /* ADFlippedViewController.h */,
+				A267E36C176409290059C236 /* ADFlippedViewController.m */,
+			);
+			path = ADFlipTransitionDemo;
+			sourceTree = "<group>";
+		};
+		A267E336176406670059C236 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A267E337176406670059C236 /* ADFlipTransitionDemo-Info.plist */,
+				A267E338176406670059C236 /* InfoPlist.strings */,
+				A267E33B176406670059C236 /* main.m */,
+				A267E33D176406670059C236 /* ADFlipTransitionDemo-Prefix.pch */,
+				A267E341176406670059C236 /* Default.png */,
+				A267E343176406670059C236 /* Default@2x.png */,
+				A267E345176406680059C236 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -128,6 +231,24 @@
 			productReference = A2302207175891BA00F247FF /* libADFlipTransition.a */;
 			productType = "com.apple.product-type.library.static";
 		};
+		A267E32E176406670059C236 /* ADFlipTransitionDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A267E35D176406680059C236 /* Build configuration list for PBXNativeTarget "ADFlipTransitionDemo" */;
+			buildPhases = (
+				A267E32B176406670059C236 /* Sources */,
+				A267E32C176406670059C236 /* Frameworks */,
+				A267E32D176406670059C236 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A267E369176408DC0059C236 /* PBXTargetDependency */,
+			);
+			name = ADFlipTransitionDemo;
+			productName = ADFlipTransitionDemo;
+			productReference = A267E32F176406670059C236 /* ADFlipTransitionDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -143,6 +264,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = A23021FE175891BA00F247FF;
 			productRefGroup = A2302208175891BA00F247FF /* Products */;
@@ -150,9 +272,25 @@
 			projectRoot = "";
 			targets = (
 				A2302206175891BA00F247FF /* ADFlipTransition */,
+				A267E32E176406670059C236 /* ADFlipTransitionDemo */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A267E32D176406670059C236 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A267E33A176406670059C236 /* InfoPlist.strings in Resources */,
+				A267E342176406670059C236 /* Default.png in Resources */,
+				A267E344176406670059C236 /* Default@2x.png in Resources */,
+				A267E346176406680059C236 /* Default-568h@2x.png in Resources */,
+				A267E349176406680059C236 /* MainStoryboard.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A2302203175891BA00F247FF /* Sources */ = {
@@ -167,7 +305,48 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A267E32B176406670059C236 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A267E33C176406670059C236 /* main.m in Sources */,
+				A267E340176406670059C236 /* ADAppDelegate.m in Sources */,
+				A267E361176407BB0059C236 /* ADDemoViewController.m in Sources */,
+				A267E364176407D00059C236 /* ADDemoCollectionViewController.m in Sources */,
+				A267E367176407E20059C236 /* ADDemoTableViewController.m in Sources */,
+				A267E36D176409290059C236 /* ADFlippedViewController.m in Sources */,
+				A267E37217640B1F0059C236 /* UIColor+Expanded.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A267E369176408DC0059C236 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A2302206175891BA00F247FF /* ADFlipTransition */;
+			targetProxy = A267E368176408DC0059C236 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A267E338176406670059C236 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A267E339176406670059C236 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A267E347176406680059C236 /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A267E348176406680059C236 /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		A2302213175891BA00F247FF /* Debug */ = {
@@ -194,8 +373,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
-				ONLY_ACTIVE_ARCH = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -217,7 +395,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -247,6 +425,41 @@
 			};
 			name = Release;
 		};
+		A267E35B176406680059C236 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ADFlipTransitionDemo/ADFlipTransitionDemo-Prefix.pch";
+				INFOPLIST_FILE = "ADFlipTransitionDemo/ADFlipTransitionDemo-Info.plist";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A267E35C176406680059C236 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ADFlipTransitionDemo/ADFlipTransitionDemo-Prefix.pch";
+				INFOPLIST_FILE = "ADFlipTransitionDemo/ADFlipTransitionDemo-Info.plist";
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -267,6 +480,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		A267E35D176406680059C236 /* Build configuration list for PBXNativeTarget "ADFlipTransitionDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A267E35B176406680059C236 /* Debug */,
+				A267E35C176406680059C236 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
