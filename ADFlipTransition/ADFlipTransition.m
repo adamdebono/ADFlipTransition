@@ -272,7 +272,7 @@
 		
 		//perform the second half of the animation
 		CATransform3D destTransform = CATransform3DMakeRotation(0, 0, 1, 0);
-		destTransform.m34 = 0;
+		destTransform.m34 = 1.0f/-500;
 		[UIView animateWithDuration:[self animationDuration]/2 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
 			[[destView layer] setTransform:destTransform];
 			[destView setFrame:destFrame];
