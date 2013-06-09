@@ -75,8 +75,18 @@
 
 - (void)updateIndexPath:(NSIndexPath *)indexPath {
 	if ([[self sourceViewController] isKindOfClass:[UICollectionViewController class]]) {
+		UICollectionView *collectionView = [(UICollectionViewController *)[self sourceViewController] collectionView];
+		if (![[collectionView indexPathsForVisibleItems] containsObject:indexPath]) {
+			[collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
+		}
+		
 		[self setSourceIndexPath:indexPath inCollectionViewConroller:(UICollectionViewController *)[self sourceViewController] withSnapshotImage:[self sourceImage]];
 	} else if ([[self sourceViewController] isKindOfClass:[UITableViewController class]]) {
+		UITableView *tableView = [(UITableViewController *)[self sourceViewController] tableView];
+		if (![[tableView indexPathsForVisibleRows] containsObject:indexPath]) {
+			[tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
+		}
+		
 		[self setSourceIndexPath:indexPath inTableViewConroller:(UITableViewController *)[self sourceViewController] withSnapshotImage:[self sourceImage]];
 	}
 }
