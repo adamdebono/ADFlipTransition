@@ -14,6 +14,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uFf-QF-e4v">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="111" id="TyQ-KW-Cs4"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Flip Modally">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -42,10 +45,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="uFf-QF-e4v" firstAttribute="leading" secondItem="16" secondAttribute="leading" constant="104" id="MCZ-Q1-r1P"/>
+                            <constraint firstAttribute="centerY" secondItem="uFf-QF-e4v" secondAttribute="centerY" type="user" id="5a2-79-5wC"/>
+                            <constraint firstItem="vWb-ux-SfQ" firstAttribute="trailing" secondItem="uFf-QF-e4v" secondAttribute="trailing" type="default" id="8cy-Rx-xHz"/>
+                            <constraint firstItem="vWb-ux-SfQ" firstAttribute="leading" secondItem="uFf-QF-e4v" secondAttribute="leading" type="default" id="Kb4-Nd-LVv"/>
                             <constraint firstItem="vWb-ux-SfQ" firstAttribute="top" secondItem="uFf-QF-e4v" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="McH-bZ-PsV"/>
-                            <constraint firstItem="vWb-ux-SfQ" firstAttribute="centerX" secondItem="16" secondAttribute="centerX" type="default" id="g6u-Df-yGc"/>
-                            <constraint firstItem="uFf-QF-e4v" firstAttribute="top" secondItem="16" secondAttribute="top" constant="203" id="sIN-Oj-UTi"/>
+                            <constraint firstAttribute="centerX" secondItem="uFf-QF-e4v" secondAttribute="centerX" type="user" id="c6W-Jg-Mx7"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Demo" id="7"/>
@@ -185,11 +189,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="T1B-fs-sHp" firstAttribute="top" secondItem="XwS-aR-QMO" secondAttribute="top" constant="199" id="4CO-92-5Mh"/>
-                            <constraint firstItem="cDK-Kv-8og" firstAttribute="top" secondItem="XwS-aR-QMO" secondAttribute="top" constant="260" id="Iap-St-Gi4"/>
-                            <constraint firstItem="cDK-Kv-8og" firstAttribute="leading" secondItem="T1B-fs-sHp" secondAttribute="leading" type="default" id="Qcm-JG-AiB"/>
+                            <constraint firstItem="cDK-Kv-8og" firstAttribute="leading" secondItem="T1B-fs-sHp" secondAttribute="leading" type="default" id="8ss-a9-kyR"/>
+                            <constraint firstItem="cDK-Kv-8og" firstAttribute="top" secondItem="T1B-fs-sHp" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="EK3-vu-yIs"/>
+                            <constraint firstAttribute="centerY" secondItem="T1B-fs-sHp" secondAttribute="centerY" type="user" id="QBq-BR-392"/>
                             <constraint firstItem="Hqb-RA-Pwu" firstAttribute="centerY" secondItem="cDK-Kv-8og" secondAttribute="centerY" type="default" id="XfE-vj-Axh"/>
-                            <constraint firstItem="cDK-Kv-8og" firstAttribute="leading" secondItem="Hqb-RA-Pwu" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="hN3-Tk-zxm"/>
+                            <constraint firstItem="cDK-Kv-8og" firstAttribute="leading" secondItem="Hqb-RA-Pwu" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="jHK-Ny-fe4"/>
                             <constraint firstItem="T1B-fs-sHp" firstAttribute="centerX" secondItem="XwS-aR-QMO" secondAttribute="centerX" type="default" id="obK-kP-xDG"/>
                         </constraints>
                     </view>
