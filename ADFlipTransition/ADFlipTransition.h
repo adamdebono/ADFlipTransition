@@ -120,7 +120,7 @@
  * will be taken just before the animation.
  * @param destinationViewController The view controller to present.
  */
-- (void)setDestinationViewController:(UIViewController *)destinationViewController asChildWithFrame:(CGRect)destinationFrame;
+- (void)setDestinationViewController:(UIViewController *)destinationViewController asChildWithSize:(CGSize)destinationSize;
 /**
  * Set the view controller to be presented. The view controller will
  * be shown as a child view controller in the given frame.
@@ -128,7 +128,7 @@
  * @param sourceImage The placeholder image for the source view. Specifying nil
  * will take a snapshot just before the animation.
  */
-- (void)setDestinationViewController:(UIViewController *)destinationViewController asChildWithFrame:(CGRect)destinationFrame withSnapshotImage:(UIImage *)destinationImage;
+- (void)setDestinationViewController:(UIViewController *)destinationViewController asChildWithSize:(CGSize)destinationSize withSnapshotImage:(UIImage *)destinationImage;
 
 /**
  * Perform the animation.

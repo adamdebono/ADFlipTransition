@@ -34,7 +34,7 @@
 @property (nonatomic) ADFlipTransition *presentingFlipTransition;
 
 - (void)flipToViewController:(UIViewController *)destinationViewController fromView:(UIView *)sourceView withCompletion:(void (^)(void))completion;
-- (void)flipToViewController:(UIViewController *)destinationViewController fromView:(UIView *)sourceView asChildWithFrame:(CGRect)destinationFrame withCompletion:(void (^)(void))completion;
+- (void)flipToViewController:(UIViewController *)destinationViewController fromView:(UIView *)sourceView asChildWithSize:(CGSize)destinationSize withCompletion:(void (^)(void))completion;
 
 - (void)dismissFlipWithCompletion:(void (^)(void))completion;
 - (void)dismissFlipToIndexPath:(NSIndexPath *)indexPath withCompletion:(void (^)(void))completion;

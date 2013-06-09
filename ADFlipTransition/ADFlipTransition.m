@@ -35,10 +35,11 @@
 @property (nonatomic) UIImage *sourceImage;
 
 @property (nonatomic) UIViewController *destinationViewController;
-@property (nonatomic) CGRect destinationFrame;
+@property (nonatomic) CGSize destinationSize;
 @property (nonatomic) UIImage *destinationImage;
 
 @property (nonatomic) UIView *shadowView;
+@property (nonatomic) BOOL presented;
 
 @end
 
@@ -51,17 +52,24 @@
 		_sourceImage = nil;
 		
 		_destinationViewController = nil;
-		_destinationFrame = CGRectNull;
+		_destinationSize = CGSizeZero;
 		_destinationImage = nil;
 		
 		_animationDuration = 0.5;
+		_presented = NO;
 		
 		_shadowView = [[UIView alloc] init];
 		[[self shadowView] setFrame:CGRectMake(0, 0, 1024, 1024)];
 		[[self shadowView] setBackgroundColor:[UIColor colorWithWhite:0 alpha:0.5]];
+		
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deviceOrientationDidChange:) name:UIDeviceOrientationDidChangeNotification object:nil];
 	}
 	
 	return self;
+}
+
+- (void)dealloc {
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - Setters
@@ -126,22 +134,22 @@
 //***********//
 
 - (void)setDestinationViewController:(UIViewController *)destinationViewController {
-	[self setDestinationViewController:destinationViewController asChildWithFrame:CGRectNull];
+	[self setDestinationViewController:destinationViewController asChildWithSize:CGSizeZero];
 }
 
 - (void)setDestinationViewController:(UIViewController *)destinationViewController withSnapshotImage:(UIImage *)destinationImage {
-	[self setDestinationViewController:destinationViewController asChildWithFrame:CGRectNull withSnapshotImage:destinationImage];
+	[self setDestinationViewController:destinationViewController asChildWithSize:CGSizeZero withSnapshotImage:destinationImage];
 }
 
 //***********//
 
-- (void)setDestinationViewController:(UIViewController *)destinationViewController asChildWithFrame:(CGRect)destinationFrame {
-	[self setDestinationViewController:destinationViewController asChildWithFrame:destinationFrame withSnapshotImage:nil];
+- (void)setDestinationViewController:(UIViewController *)destinationViewController asChildWithSize:(CGSize)destinationSize {
+	[self setDestinationViewController:destinationViewController asChildWithSize:destinationSize withSnapshotImage:nil];
 }
 
-- (void)setDestinationViewController:(UIViewController *)destinationViewController asChildWithFrame:(CGRect)destinationFrame withSnapshotImage:(UIImage *)destinationImage {
+- (void)setDestinationViewController:(UIViewController *)destinationViewController asChildWithSize:(CGSize)destinationSize withSnapshotImage:(UIImage *)destinationImage {
 	_destinationViewController = destinationViewController;
-	_destinationFrame = destinationFrame;
+	_destinationSize = destinationSize;
 	_destinationImage = destinationImage;
 }
 
@@ -198,6 +206,20 @@
 	return CGRectMake(rect.origin.y, rect.origin.x, rect.size.height, rect.size.width);
 }
 
+- (CGRect)rectAtCenterOfRect:(CGRect)rect withSize:(CGSize)size {
+	size.width = MIN(size.width, rect.size.width);
+	size.height = MIN(size.height, rect.size.height);
+	return CGRectMake((rect.size.width-size.width)/2, (rect.size.height-size.height)/2, size.width, size.height);
+}
+
+- (void)deviceOrientationDidChange:(NSNotification *)note {
+	if (!CGSizeEqualToSize([self destinationSize], CGSizeZero) && [self presented]) {
+		[UIView animateWithDuration:[[UIApplication sharedApplication] statusBarOrientationAnimationDuration] animations:^{
+			[[[self destinationViewController] view] setFrame:[self rectAtCenterOfRect:[self fullScreenRect] withSize:[self destinationSize]]];
+		}];
+	}
+}
+
 #pragma mark - Animations
 
 - (void)perform {
@@ -220,7 +242,7 @@
 	}
 	
 	//put the destination view controller on screen
-	if (CGRectEqualToRect([self destinationFrame], CGRectNull)) {
+	if (CGSizeEqualToSize([self destinationSize], CGSizeZero)) {
 		//present destination view modally
 		modal = YES;
 		
@@ -241,7 +263,8 @@
 		[srcViewController addChildViewController:[self destinationViewController]];
 		[[self destinationViewController] didMoveToParentViewController:srcViewController];
 		
-		destFrame = [self destinationFrame];
+		destFrame = [self rectAtCenterOfRect:[self fullScreenRect] withSize:[self destinationSize]];
+		
 		[[[self destinationViewController] view] setFrame:destFrame];
 		[[srcViewController view] addSubview:[[self destinationViewController] view]];
 	}
@@ -308,6 +331,8 @@
 			
 			[[UIApplication sharedApplication] endIgnoringInteractionEvents];
 			
+			_presented = YES;
+			
 			if (completion) {
 				completion();
 			}
@@ -330,7 +355,7 @@
 	}
 	
 	CGRect destFrame;
-	if (CGRectEqualToRect([self destinationFrame], CGRectNull)) {
+	if (CGSizeEqualToSize([self destinationSize], CGSizeZero)) {
 		modal = YES;
 		destFrame = [self fullScreenRect];
 	} else {
@@ -407,6 +432,8 @@
 			}
 			
 			[[UIApplication sharedApplication] endIgnoringInteractionEvents];
+			
+			_presented = NO;
 			
 			if (completion) {
 				completion();

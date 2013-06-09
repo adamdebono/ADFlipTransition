@@ -55,7 +55,7 @@
 	[viewController view];
 	[viewController hideStepper];
 	
-	[self flipToViewController:viewController fromView:sender asChildWithFrame:CGRectInset([[self view] frame], 50, 50) withCompletion:NULL];
+	[self flipToViewController:viewController fromView:sender asChildWithSize:CGSizeMake(350, 350) withCompletion:NULL];
 }
 
 @end
