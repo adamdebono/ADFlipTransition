@@ -38,6 +38,8 @@
 @property (nonatomic) CGRect destinationFrame;
 @property (nonatomic) UIImage *destinationImage;
 
+@property (nonatomic) UIView *shadowView;
+
 @end
 
 @implementation ADFlipTransition
@@ -53,6 +55,10 @@
 		_destinationImage = nil;
 		
 		_animationDuration = 0.5;
+		
+		_shadowView = [[UIView alloc] init];
+		[[self shadowView] setFrame:CGRectMake(0, 0, 1024, 1024)];
+		[[self shadowView] setBackgroundColor:[UIColor colorWithWhite:0 alpha:0.5]];
 	}
 	
 	return self;
@@ -200,12 +206,14 @@
 
 - (void)performWithCompletion:(void (^)(void))completion {
 	[[UIApplication sharedApplication] beginIgnoringInteractionEvents];
-		
+	
+	[[self shadowView] removeFromSuperview];
+	
 	BOOL modal;
 	
 	CGRect destFrame;
 	CGRect srcFrame = [self actualRectInView:[self sourceView]];
-	
+		
 	UIViewController *srcViewController = [self sourceViewController];
 	while ([srcViewController parentViewController]) {
 		srcViewController = [srcViewController parentViewController];
@@ -223,6 +231,11 @@
 		[[[self destinationViewController] view] layoutIfNeeded];
 	} else {
 		modal = NO;
+		
+		//add a shadow view
+		[[self shadowView] setCenter:[[srcViewController view] center]];
+		[[srcViewController view] addSubview:[self shadowView]];
+		[[self shadowView] setAlpha:0];
 		
 		//add destination view as a child
 		[srcViewController addChildViewController:[self destinationViewController]];
@@ -264,6 +277,9 @@
 	[UIView animateWithDuration:[self animationDuration]/2 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
 		[[srcView layer] setTransform:srcTransform];
 		[srcView setFrame:halfwayFrame];
+		if (!modal) {
+			[[self shadowView] setAlpha:0.5f];
+		}
 	} completion:^(BOOL finished) {
 		//get rid of the source animation view
 		[srcView removeFromSuperview];
@@ -275,6 +291,10 @@
 		[UIView animateWithDuration:[self animationDuration]/2 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
 			[[destView layer] setTransform:destTransform];
 			[destView setFrame:destFrame];
+			
+			if (!modal) {
+				[[self shadowView] setAlpha:1];
+			}
 		} completion:^(BOOL finished) {
 			//get rid of the destination animation view
 			[destView removeFromSuperview];
@@ -359,6 +379,10 @@
 	[UIView animateWithDuration:[self animationDuration]/2 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
 		[[destView layer] setTransform:destTransform];
 		[destView setFrame:halfwayFrame];
+		
+		if (!modal) {
+			[[self shadowView] setAlpha:0.5f];
+		}
 	} completion:^(BOOL finished) {
 		//get rid of the destination animation view
 		[destView removeFromSuperview];
@@ -370,9 +394,17 @@
 		[UIView animateWithDuration:[self animationDuration]/2 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
 			[[srcView layer] setTransform:srcTransform];
 			[srcView setFrame:srcFrame];
+			
+			if (!modal) {
+				[[self shadowView] setAlpha:0];
+			}
 		} completion:^(BOOL finished) {
 			[srcView removeFromSuperview];
 			[[self sourceView] setHidden:NO];
+			
+			if (!modal) {
+				[[self shadowView] removeFromSuperview];
+			}
 			
 			[[UIApplication sharedApplication] endIgnoringInteractionEvents];
 			
