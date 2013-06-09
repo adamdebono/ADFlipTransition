@@ -173,8 +173,12 @@
                                     <action selector="cellNumberChanged:" destination="C6D-gG-ukH" eventType="valueChanged" id="j3S-6R-6wp"/>
                                 </connections>
                             </stepper>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hqb-RA-Pwu">
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="1" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hqb-RA-Pwu">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="73" id="eil-kn-2Jc"/>
+                                    <constraint firstAttribute="height" constant="21" id="w42-Or-Ppu"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -183,9 +187,9 @@
                         <constraints>
                             <constraint firstItem="T1B-fs-sHp" firstAttribute="top" secondItem="XwS-aR-QMO" secondAttribute="top" constant="199" id="4CO-92-5Mh"/>
                             <constraint firstItem="cDK-Kv-8og" firstAttribute="top" secondItem="XwS-aR-QMO" secondAttribute="top" constant="260" id="Iap-St-Gi4"/>
-                            <constraint firstItem="cDK-Kv-8og" firstAttribute="leading" secondItem="Hqb-RA-Pwu" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="QqU-ef-skh"/>
+                            <constraint firstItem="cDK-Kv-8og" firstAttribute="leading" secondItem="T1B-fs-sHp" secondAttribute="leading" type="default" id="Qcm-JG-AiB"/>
                             <constraint firstItem="Hqb-RA-Pwu" firstAttribute="centerY" secondItem="cDK-Kv-8og" secondAttribute="centerY" type="default" id="XfE-vj-Axh"/>
-                            <constraint firstItem="Hqb-RA-Pwu" firstAttribute="leading" secondItem="XwS-aR-QMO" secondAttribute="leading" constant="104" id="iwc-EW-cZ6"/>
+                            <constraint firstItem="cDK-Kv-8og" firstAttribute="leading" secondItem="Hqb-RA-Pwu" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="hN3-Tk-zxm"/>
                             <constraint firstItem="T1B-fs-sHp" firstAttribute="centerX" secondItem="XwS-aR-QMO" secondAttribute="centerX" type="default" id="obK-kP-xDG"/>
                         </constraints>
                     </view>

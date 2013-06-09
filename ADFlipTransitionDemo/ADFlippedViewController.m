@@ -24,7 +24,9 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	
-	[[self view] setBackgroundColor:[UIColor randomColor]];
+	UIColor *color = [UIColor randomColor];
+	[[self view] setBackgroundColor:color];
+	[[self cellNumberLabel] setTextColor:[color contrastingColor]];
 }
 
 - (void)hideStepper {
