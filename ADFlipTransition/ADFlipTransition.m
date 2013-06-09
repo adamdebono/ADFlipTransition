@@ -60,6 +60,14 @@
 }
 
 - (void)setSourceIndexPath:(NSIndexPath *)indexPath inCollectionViewConroller:(UICollectionViewController *)sourceViewController withSnapshotImage:(UIImage *)sourceImage {
+	UICollectionView *collectionView = [sourceViewController collectionView];
+	if (![[collectionView indexPathsForVisibleItems] containsObject:indexPath]) {
+		[collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally|UICollectionViewScrollPositionCenteredVertically animated:NO];
+		[collectionView reloadData];
+		[collectionView setNeedsLayout];
+		[collectionView layoutIfNeeded];
+	}
+	
 	UICollectionViewCell *cell = [[sourceViewController collectionView] cellForItemAtIndexPath:indexPath];
 	[self setSourceView:cell inViewController:sourceViewController withSnapshotImage:sourceImage];
 }
@@ -75,10 +83,11 @@
 
 - (void)updateIndexPath:(NSIndexPath *)indexPath {
 	if ([[self sourceViewController] isKindOfClass:[UICollectionViewController class]]) {
-		UICollectionView *collectionView = [(UICollectionViewController *)[self sourceViewController] collectionView];
+		/*UICollectionView *collectionView = [(UICollectionViewController *)[self sourceViewController] collectionView];
 		if (![[collectionView indexPathsForVisibleItems] containsObject:indexPath]) {
-			[collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
-		}
+			[collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally|UICollectionViewScrollPositionCenteredVertically animated:NO];
+			[collectionView reloadData];
+		}*/
 		
 		[self setSourceIndexPath:indexPath inCollectionViewConroller:(UICollectionViewController *)[self sourceViewController] withSnapshotImage:[self sourceImage]];
 	} else if ([[self sourceViewController] isKindOfClass:[UITableViewController class]]) {
