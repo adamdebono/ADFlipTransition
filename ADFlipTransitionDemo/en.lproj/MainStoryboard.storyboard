@@ -48,7 +48,7 @@
                             <constraint firstItem="uFf-QF-e4v" firstAttribute="top" secondItem="16" secondAttribute="top" constant="203" id="sIN-Oj-UTi"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Demo" image="first" id="7"/>
+                    <tabBarItem key="tabBarItem" title="Demo" id="7"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="10" sceneMemberID="firstResponder"/>
             </objects>
@@ -199,9 +199,6 @@
             <point key="canvasLocation" x="1117" y="480"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="first" width="16" height="16"/>
-    </resources>
     <classes>
         <class className="ADDemoCollectionViewController" superclassName="UICollectionViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ADDemoCollectionViewController.h"/>
