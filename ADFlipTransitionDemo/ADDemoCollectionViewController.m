@@ -37,8 +37,10 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 	ADFlippedViewController *viewController = [[UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil] instantiateViewControllerWithIdentifier:@"ADFlippedViewController"];
 	
-    [self flipToViewController:viewController fromItemAtIndexPath:indexPath withCompletion:NULL];
+	[viewController view];
 	[viewController setCellNumber:[indexPath row]];
+	
+    [self flipToViewController:viewController fromItemAtIndexPath:indexPath withCompletion:NULL];
 }
 
 @end

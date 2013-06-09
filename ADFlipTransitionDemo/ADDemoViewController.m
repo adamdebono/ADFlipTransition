@@ -26,6 +26,8 @@
 
 - (IBAction)flipModally:(id)sender {
 	ADFlippedViewController *viewController = [[UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil] instantiateViewControllerWithIdentifier:@"ADFlippedViewController"];
+	
+	[viewController view];
 	[viewController hideStepper];
 	
 	[self flipToViewController:viewController fromView:sender withCompletion:NULL];
