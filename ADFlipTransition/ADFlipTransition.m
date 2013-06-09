@@ -140,7 +140,7 @@
 			srcViewController = [srcViewController parentViewController];
 		}
 		
-		destFrame = [[srcViewController view] bounds];
+		destFrame = [[[self destinationViewController] view] frame];
 		
 		[[[self destinationViewController] view] setNeedsLayout];
 		[[[self destinationViewController] view] layoutIfNeeded];
@@ -234,7 +234,7 @@
 		srcViewController = [srcViewController parentViewController];
 	}
 	
-	CGRect destFrame = [[[self destinationViewController] view] bounds];
+	CGRect destFrame = [[[self destinationViewController] view] frame];
 	CGRect srcFrame = [[self sourceView] frame];
 	srcFrame = [[srcViewController view] convertRect:srcFrame fromView:[[self sourceViewController] view]];
 	
