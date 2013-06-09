@@ -125,6 +125,22 @@
 	return betweenRect;
 }
 
+- (CGRect)actualRectInView:(UIView *)view {
+	CGRect frame = [view frame];
+	UIView *superview = [view superview];
+	while (superview) {
+		CGRect newFrame = [[superview superview] convertRect:frame fromView:superview];
+		if (CGRectEqualToRect(newFrame, CGRectZero)) {
+			break;
+		}
+		frame = newFrame;
+		
+		superview = [superview superview];
+	}
+	
+	return frame;
+}
+
 #pragma mark - Animations
 
 - (void)perform {
@@ -137,7 +153,7 @@
 	BOOL modal;
 	
 	CGRect destFrame;
-	CGRect srcFrame = [[self sourceView] frame];
+	CGRect srcFrame = [self actualRectInView:[self sourceView]];
 	
 	UIViewController *srcViewController = [self sourceViewController];
 	
@@ -165,8 +181,6 @@
 		[[[self destinationViewController] view] setFrame:destFrame];
 		[[[self sourceViewController] view] addSubview:[[self destinationViewController] view]];
 	}
-	
-	srcFrame = [[srcViewController view] convertRect:srcFrame fromView:[[self sourceViewController] view]];
 	
 	//create the destination animation view
 	UIImage *destImage = [self destinationImage]?[self destinationImage]:[[[self destinationViewController] view] snapshot];
@@ -245,8 +259,7 @@
 	}
 	
 	CGRect destFrame = [[[self destinationViewController] view] frame];
-	CGRect srcFrame = [[self sourceView] frame];
-	srcFrame = [[srcViewController view] convertRect:srcFrame fromView:[[self sourceViewController] view]];
+	CGRect srcFrame = [self actualRectInView:[self sourceView]];
 	
 	//create the destination animation view
 	UIImage *destImage = [self destinationImage]?[self destinationImage]:[[[self destinationViewController] view] snapshot];
