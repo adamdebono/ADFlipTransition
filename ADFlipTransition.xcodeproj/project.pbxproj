@@ -99,6 +99,8 @@
 		A2C721B41764C1C500817817 /* CollectionViewStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CollectionViewStoryboard.storyboard; sourceTree = "<group>"; };
 		A2C721B61764C22000817817 /* ADDemoTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADDemoTabViewController.h; sourceTree = "<group>"; };
 		A2C721B71764C22000817817 /* ADDemoTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADDemoTabViewController.m; sourceTree = "<group>"; };
+		A2C721B91764C8F400817817 /* License.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = License.txt; sourceTree = "<group>"; };
+		A2C721BA1764C8F400817817 /* Readme.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = Readme.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +130,8 @@
 		A23021FE175891BA00F247FF = {
 			isa = PBXGroup;
 			children = (
+				A2C721B91764C8F400817817 /* License.txt */,
+				A2C721BA1764C8F400817817 /* Readme.md */,
 				A230220C175891BA00F247FF /* ADFlipTransition */,
 				A267E335176406670059C236 /* ADFlipTransitionDemo */,
 				A2302209175891BA00F247FF /* Frameworks */,
