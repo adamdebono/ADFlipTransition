@@ -168,7 +168,7 @@
                                     <action selector="backPressed:" destination="C6D-gG-ukH" eventType="touchUpInside" id="Irm-pW-Cbh"/>
                                 </connections>
                             </button>
-                            <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="cDK-Kv-8og">
+                            <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" maximumValue="99" translatesAutoresizingMaskIntoConstraints="NO" id="cDK-Kv-8og">
                                 <connections>
                                     <action selector="cellNumberChanged:" destination="C6D-gG-ukH" eventType="valueChanged" id="j3S-6R-6wp"/>
                                 </connections>
