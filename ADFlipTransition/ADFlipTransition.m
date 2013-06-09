@@ -209,7 +209,7 @@
 - (CGRect)rectAtCenterOfRect:(CGRect)rect withSize:(CGSize)size {
 	size.width = MIN(size.width, rect.size.width);
 	size.height = MIN(size.height, rect.size.height);
-	return CGRectMake((rect.size.width-size.width)/2, (rect.size.height-size.height)/2, size.width, size.height);
+	return CGRectMake((rect.size.width-size.width)/2+rect.origin.x, (rect.size.height-size.height)/2+rect.origin.y, size.width, size.height);
 }
 
 - (void)deviceOrientationDidChange:(NSNotification *)note {
@@ -270,6 +270,7 @@
 		
 		[[[[self destinationViewController] view] layer] setMasksToBounds:YES];
 		[[[[self destinationViewController] view] layer] setCornerRadius:3.0f];
+		[[[[self destinationViewController] view] layer] setZPosition:1000];
 	}
 	
 	//create the destination animation view
