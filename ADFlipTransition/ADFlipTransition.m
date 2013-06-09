@@ -207,15 +207,14 @@
 	CGRect srcFrame = [self actualRectInView:[self sourceView]];
 	
 	UIViewController *srcViewController = [self sourceViewController];
+	while ([srcViewController parentViewController]) {
+		srcViewController = [srcViewController parentViewController];
+	}
 	
 	//put the destination view controller on screen
 	if (CGRectEqualToRect([self destinationFrame], CGRectNull)) {
 		//present destination view modally
 		modal = YES;
-		
-		while ([srcViewController parentViewController]) {
-			srcViewController = [srcViewController parentViewController];
-		}
 		
 		destFrame = [self fullScreenRect];
 		
@@ -226,12 +225,12 @@
 		modal = NO;
 		
 		//add destination view as a child
-		[[self sourceViewController] addChildViewController:[self destinationViewController]];
-		[[self destinationViewController] didMoveToParentViewController:[self sourceViewController]];
+		[srcViewController addChildViewController:[self destinationViewController]];
+		[[self destinationViewController] didMoveToParentViewController:srcViewController];
 		
 		destFrame = [self destinationFrame];
 		[[[self destinationViewController] view] setFrame:destFrame];
-		[[[self sourceViewController] view] addSubview:[[self destinationViewController] view]];
+		[[srcViewController view] addSubview:[[self destinationViewController] view]];
 	}
 	
 	//create the destination animation view

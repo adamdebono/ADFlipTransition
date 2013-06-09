@@ -55,9 +55,13 @@ static NSString *const kPresentingFlipTransitionKey = @"kPresentingFlipTransitio
 #pragma mark - Performing
 
 - (void)flipToViewController:(UIViewController *)destinationViewController fromView:(UIView *)sourceView withCompletion:(void (^)(void))completion {
+	[self flipToViewController:destinationViewController fromView:sourceView asChildWithFrame:CGRectNull withCompletion:NULL];
+}
+
+- (void)flipToViewController:(UIViewController *)destinationViewController fromView:(UIView *)sourceView asChildWithFrame:(CGRect)destinationFrame withCompletion:(void (^)(void))completion {
 	ADFlipTransition *transition = [[ADFlipTransition alloc] init];
 	[transition setSourceView:sourceView inViewController:self];
-	[transition setDestinationViewController:destinationViewController];
+	[transition setDestinationViewController:destinationViewController asChildWithFrame:destinationFrame];
 	
 	[self setPresentedFlipTransition:transition];
 	[destinationViewController setPresentingFlipTransition:transition];

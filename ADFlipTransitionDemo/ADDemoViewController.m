@@ -50,7 +50,12 @@
 }
 
 - (IBAction)flipAsChild:(id)sender {
+	ADFlippedViewController *viewController = [[UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil] instantiateViewControllerWithIdentifier:@"ADFlippedViewController"];
 	
+	[viewController view];
+	[viewController hideStepper];
+	
+	[self flipToViewController:viewController fromView:sender asChildWithFrame:CGRectInset([[self view] frame], 50, 50) withCompletion:NULL];
 }
 
 @end
