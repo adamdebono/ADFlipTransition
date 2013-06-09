@@ -235,7 +235,7 @@
 	
 	CGRect destFrame;
 	CGRect srcFrame = [self actualRectInView:[self sourceView]];
-		
+	
 	UIViewController *srcViewController = [self sourceViewController];
 	while ([srcViewController parentViewController]) {
 		srcViewController = [srcViewController parentViewController];
@@ -267,6 +267,9 @@
 		
 		[[[self destinationViewController] view] setFrame:destFrame];
 		[[srcViewController view] addSubview:[[self destinationViewController] view]];
+		
+		[[[[self destinationViewController] view] layer] setMasksToBounds:YES];
+		[[[[self destinationViewController] view] layer] setCornerRadius:3.0f];
 	}
 	
 	//create the destination animation view
