@@ -18,6 +18,15 @@
 - (void)setSourceView:(UIView *)sourceView inViewController:(UIViewController *)sourceViewController;
 - (void)setSourceView:(UIView *)sourceView inViewController:(UIViewController *)sourceViewController withSnapshotImage:(UIImage *)sourceImage;
 
+//animate from a collection or table view controller
+- (void)setSourceIndexPath:(NSIndexPath *)indexPath inCollectionViewConroller:(UICollectionViewController *)sourceViewController;
+- (void)setSourceIndexPath:(NSIndexPath *)indexPath inCollectionViewConroller:(UICollectionViewController *)sourceViewController withSnapshotImage:(UIImage *)sourceImage;
+
+- (void)setSourceIndexPath:(NSIndexPath *)indexPath inTableViewConroller:(UITableViewController *)sourceViewController;
+- (void)setSourceIndexPath:(NSIndexPath *)indexPath inTableViewConroller:(UITableViewController *)sourceViewController withSnapshotImage:(UIImage *)sourceImage;
+
+- (void)updateIndexPath:(NSIndexPath *)indexPath;
+
 //destination view controller will be shown 'modally'
 - (void)setDestinationViewController:(UIViewController *)destinationViewController;
 - (void)setDestinationViewController:(UIViewController *)destinationViewController withSnapshotImage:(UIImage *)destinationImage;

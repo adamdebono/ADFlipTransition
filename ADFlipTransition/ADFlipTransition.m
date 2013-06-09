@@ -55,6 +55,34 @@
 
 //***********//
 
+- (void)setSourceIndexPath:(NSIndexPath *)indexPath inCollectionViewConroller:(UICollectionViewController *)sourceViewController {
+	[self setSourceIndexPath:indexPath inCollectionViewConroller:sourceViewController withSnapshotImage:nil];
+}
+
+- (void)setSourceIndexPath:(NSIndexPath *)indexPath inCollectionViewConroller:(UICollectionViewController *)sourceViewController withSnapshotImage:(UIImage *)sourceImage {
+	UICollectionViewCell *cell = [[sourceViewController collectionView] cellForItemAtIndexPath:indexPath];
+	[self setSourceView:cell inViewController:sourceViewController withSnapshotImage:sourceImage];
+}
+
+- (void)setSourceIndexPath:(NSIndexPath *)indexPath inTableViewConroller:(UITableViewController *)sourceViewController {
+	[self setSourceIndexPath:indexPath inTableViewConroller:sourceViewController withSnapshotImage:nil];
+}
+
+- (void)setSourceIndexPath:(NSIndexPath *)indexPath inTableViewConroller:(UITableViewController *)sourceViewController withSnapshotImage:(UIImage *)sourceImage {
+	UITableViewCell *cell = [[sourceViewController tableView] cellForRowAtIndexPath:indexPath];
+	[self setSourceView:cell inViewController:sourceViewController withSnapshotImage:sourceImage];
+}
+
+- (void)updateIndexPath:(NSIndexPath *)indexPath {
+	if ([[self sourceViewController] isKindOfClass:[UICollectionViewController class]]) {
+		[self setSourceIndexPath:indexPath inCollectionViewConroller:(UICollectionViewController *)[self sourceViewController] withSnapshotImage:[self sourceImage]];
+	} else if ([[self sourceViewController] isKindOfClass:[UITableViewController class]]) {
+		[self setSourceIndexPath:indexPath inTableViewConroller:(UITableViewController *)[self sourceViewController] withSnapshotImage:[self sourceImage]];
+	}
+}
+
+//***********//
+
 - (void)setDestinationViewController:(UIViewController *)destinationViewController {
 	[self setDestinationViewController:destinationViewController asChildWithFrame:CGRectNull];
 }
@@ -77,6 +105,16 @@
 
 #pragma mark - 
 
+- (CGRect)rectBetween:(CGRect)firstRect andRect:(CGRect)secondRect {
+	CGRect betweenRect = CGRectZero;
+	betweenRect.origin.x = (firstRect.origin.x + secondRect.origin.x) / 2;
+	betweenRect.origin.y = (firstRect.origin.y + secondRect.origin.y) / 2;
+	betweenRect.size.width = (firstRect.size.width + secondRect.size.width) / 2;
+	betweenRect.size.height = (firstRect.size.height + secondRect.size.height) / 2;
+	
+	return betweenRect;
+}
+
 #pragma mark - Animations
 
 - (void)perform {
@@ -85,19 +123,26 @@
 
 - (void)performWithCompletion:(void (^)(void))completion {
 	[[UIApplication sharedApplication] beginIgnoringInteractionEvents];
-	
+		
 	BOOL modal;
 	
 	CGRect destFrame;
 	CGRect srcFrame = [[self sourceView] frame];
+	
+	UIViewController *srcViewController = [self sourceViewController];
 	
 	//put the destination view controller on screen
 	if (CGRectEqualToRect([self destinationFrame], CGRectNull)) {
 		//present destination view modally
 		modal = YES;
 		
-		destFrame = [[[UIApplication sharedApplication] keyWindow] frame];
-		[[[self destinationViewController] view] setFrame:destFrame];
+		while ([srcViewController parentViewController]) {
+			srcViewController = [srcViewController parentViewController];
+		}
+		
+		destFrame = [[srcViewController view] bounds];
+		//destFrame = [[[UIApplication sharedApplication] keyWindow] frame];
+		//[[[self destinationViewController] view] setFrame:destFrame];
 	} else {
 		modal = NO;
 		
@@ -110,28 +155,26 @@
 		[[[self sourceViewController] view] addSubview:[[self destinationViewController] view]];
 	}
 	
+	srcFrame = [[srcViewController view] convertRect:srcFrame fromView:[[self sourceViewController] view]];
+	
 	//create the destination animation view
 	UIImage *destImage = [self destinationImage]?[self destinationImage]:[[[self destinationViewController] view] snapshot];
 	UIImageView *destView = [[UIImageView alloc] initWithImage:destImage];
 	[destView setFrame:destFrame];
 	[[destView layer] setZPosition:1024];
-	[[[self sourceViewController] view] addSubview:destView];
+	[[srcViewController view] addSubview:destView];
 	[[[self destinationViewController] view] setHidden:YES];
-		
+	
 	//create the source animation view and hide the original
 	UIImage *srcImage = [self sourceImage]?[self sourceImage]:[[self sourceView] snapshot];
 	UIImageView *srcView = [[UIImageView alloc] initWithImage:srcImage];
 	[srcView setFrame:srcFrame];
 	[[srcView layer] setZPosition:1024];
-	[[[self sourceViewController] view] addSubview:srcView];
+	[[srcViewController view] addSubview:srcView];
 	[[self sourceView] setHidden:YES];
 	
-	//calculate the size of the views halway through the animation
-	CGRect halfwayFrame = CGRectZero;
-	halfwayFrame.origin.x = (srcFrame.origin.x - (srcFrame.origin.x - destFrame.origin.x)) / 2;
-	halfwayFrame.origin.y = (srcFrame.origin.y - (srcFrame.origin.y - destFrame.origin.y)) / 2;
-	halfwayFrame.size.width = (destFrame.size.width - srcFrame.size.width) / 2 + destFrame.size.width;
-	halfwayFrame.size.height = (destFrame.size.height - srcFrame.size.height) / 2 + destFrame.size.height;
+	//calculate the size of the views halfway through the animation
+	CGRect halfwayFrame = [self rectBetween:srcFrame andRect:destFrame];
 	
 	//pre-flip the destination view halfway around and hide it
 	CATransform3D preTransform = CATransform3DMakeRotation(-M_PI/2, 0, 1, 0);
@@ -161,7 +204,7 @@
 			[destView removeFromSuperview];
 			
 			if (modal) {
-				[[self sourceViewController] presentViewController:[self destinationViewController] animated:NO completion:NULL];
+				[srcViewController presentViewController:[self destinationViewController] animated:NO completion:NULL];
 			}
 			
 			[[self sourceView] setHidden:NO];
@@ -185,15 +228,21 @@
 	
 	BOOL modal;
 	
-	CGRect destFrame = [[[self destinationViewController] view] frame];
+	UIViewController *srcViewController = [self sourceViewController];
+	while ([srcViewController parentViewController]) {
+		srcViewController = [srcViewController parentViewController];
+	}
+	
+	CGRect destFrame = [[[self destinationViewController] view] bounds];
 	CGRect srcFrame = [[self sourceView] frame];
+	srcFrame = [[srcViewController view] convertRect:srcFrame fromView:[[self sourceViewController] view]];
 	
 	//create the destination animation view
 	UIImage *destImage = [self destinationImage]?[self destinationImage]:[[[self destinationViewController] view] snapshot];
 	UIImageView *destView = [[UIImageView alloc] initWithImage:destImage];
 	[destView setFrame:destFrame];
 	[[destView layer] setZPosition:1024];
-	[[[self sourceViewController] view] addSubview:destView];
+	[[srcViewController view] addSubview:destView];
 	
 	//remove the destination view from screen
 	if (CGRectEqualToRect([self destinationFrame], CGRectNull)) {
@@ -213,15 +262,11 @@
 	UIImageView *srcView = [[UIImageView alloc] initWithImage:srcImage];
 	[srcView setFrame:srcFrame];
 	[[srcView layer] setZPosition:1024];
-	[[[self sourceViewController] view] addSubview:srcView];
+	[[srcViewController view] addSubview:srcView];
 	[[self sourceView] setHidden:YES];
 	
 	//calculate the halfway point
-	CGRect halfwayFrame = CGRectZero;
-	halfwayFrame.origin.x = (srcFrame.origin.x - (srcFrame.origin.x - destFrame.origin.x)) / 2;
-	halfwayFrame.origin.y = (srcFrame.origin.y - (srcFrame.origin.y - destFrame.origin.y)) / 2;
-	halfwayFrame.size.width = (destFrame.size.width - srcFrame.size.width) / 2 + destFrame.size.width;
-	halfwayFrame.size.height = (destFrame.size.height - srcFrame.size.height) / 2 + destFrame.size.height;
+	CGRect halfwayFrame = [self rectBetween:srcFrame andRect:destFrame];
 	
 	//pre-flip the source animation view halfway around and hide it
 	CATransform3D preTransform = CATransform3DMakeRotation(M_PI/2, 0, 1, 0);
@@ -231,17 +276,31 @@
 	[srcView setFrame:halfwayFrame];
 	
 	//perform the first half of the animation
+	CATransform3D destTransform = CATransform3DMakeRotation(-M_PI/2, 0, 1, 0);
+	destTransform.m34 = 1.0f/-500;
 	[UIView animateWithDuration:[self animationDuration]/2 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
-		
+		[[destView layer] setTransform:destTransform];
+		[destView setFrame:halfwayFrame];
 	} completion:^(BOOL finished) {
 		//get rid of the destination animation view
+		[destView removeFromSuperview];
 		
 		//perform the second half of the animation
+		[srcView setHidden:NO];
+		CATransform3D srcTransform = CATransform3DMakeRotation(0, 0, 1, 0);
+		srcTransform.m34 = 1.0f/-500;
 		[UIView animateWithDuration:[self animationDuration]/2 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-			
+			[[srcView layer] setTransform:srcTransform];
+			[srcView setFrame:srcFrame];
 		} completion:^(BOOL finished) {
+			[srcView removeFromSuperview];
+			[[self sourceView] setHidden:NO];
 			
 			[[UIApplication sharedApplication] endIgnoringInteractionEvents];
+			
+			if (completion) {
+				completion();
+			}
 		}];
 	}];
 }

@@ -11,6 +11,9 @@
 		A2302210175891BA00F247FF /* ADFlipTransition.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A230220F175891BA00F247FF /* ADFlipTransition.h */; };
 		A2302212175891BA00F247FF /* ADFlipTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = A2302211175891BA00F247FF /* ADFlipTransition.m */; };
 		A230221D1758C85D00F247FF /* UIView+Snapshot.m in Sources */ = {isa = PBXBuildFile; fileRef = A230221C1758C85D00F247FF /* UIView+Snapshot.m */; };
+		A267E3241763FBCE0059C236 /* UIViewController+ADFlipTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = A267E3231763FBCE0059C236 /* UIViewController+ADFlipTransition.m */; };
+		A267E327176400450059C236 /* UICollectionViewController+ADFlipTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = A267E326176400450059C236 /* UICollectionViewController+ADFlipTransition.m */; };
+		A267E32A1764048D0059C236 /* UITableViewController+ADFlipTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = A267E3291764048D0059C236 /* UITableViewController+ADFlipTransition.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -34,6 +37,12 @@
 		A2302211175891BA00F247FF /* ADFlipTransition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ADFlipTransition.m; sourceTree = "<group>"; };
 		A230221B1758C85D00F247FF /* UIView+Snapshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Snapshot.h"; sourceTree = "<group>"; };
 		A230221C1758C85D00F247FF /* UIView+Snapshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Snapshot.m"; sourceTree = "<group>"; };
+		A267E3221763FBCE0059C236 /* UIViewController+ADFlipTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ADFlipTransition.h"; sourceTree = "<group>"; };
+		A267E3231763FBCE0059C236 /* UIViewController+ADFlipTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ADFlipTransition.m"; sourceTree = "<group>"; };
+		A267E325176400450059C236 /* UICollectionViewController+ADFlipTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UICollectionViewController+ADFlipTransition.h"; sourceTree = "<group>"; };
+		A267E326176400450059C236 /* UICollectionViewController+ADFlipTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UICollectionViewController+ADFlipTransition.m"; sourceTree = "<group>"; };
+		A267E3281764048D0059C236 /* UITableViewController+ADFlipTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewController+ADFlipTransition.h"; sourceTree = "<group>"; };
+		A267E3291764048D0059C236 /* UITableViewController+ADFlipTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewController+ADFlipTransition.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +90,12 @@
 				A230220D175891BA00F247FF /* Supporting Files */,
 				A230221B1758C85D00F247FF /* UIView+Snapshot.h */,
 				A230221C1758C85D00F247FF /* UIView+Snapshot.m */,
+				A267E3221763FBCE0059C236 /* UIViewController+ADFlipTransition.h */,
+				A267E3231763FBCE0059C236 /* UIViewController+ADFlipTransition.m */,
+				A267E325176400450059C236 /* UICollectionViewController+ADFlipTransition.h */,
+				A267E326176400450059C236 /* UICollectionViewController+ADFlipTransition.m */,
+				A267E3281764048D0059C236 /* UITableViewController+ADFlipTransition.h */,
+				A267E3291764048D0059C236 /* UITableViewController+ADFlipTransition.m */,
 			);
 			path = ADFlipTransition;
 			sourceTree = "<group>";
@@ -146,6 +161,9 @@
 			files = (
 				A2302212175891BA00F247FF /* ADFlipTransition.m in Sources */,
 				A230221D1758C85D00F247FF /* UIView+Snapshot.m in Sources */,
+				A267E3241763FBCE0059C236 /* UIViewController+ADFlipTransition.m in Sources */,
+				A267E327176400450059C236 /* UICollectionViewController+ADFlipTransition.m in Sources */,
+				A267E32A1764048D0059C236 /* UITableViewController+ADFlipTransition.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,6 +266,7 @@
 				A2302217175891BA00F247FF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
