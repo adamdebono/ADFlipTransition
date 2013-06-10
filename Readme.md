@@ -27,9 +27,9 @@ Once you have got the source, you can install the component in two ways.
 
 ### Import the files ###
 
-1. Drag ADFlipTransition.h and .m into your project.
+1. Drag ADFlipTransition.h & .m and UIView+Snapshot.h & .m into your project, and any of the view controller categories you wish to use.
 2. Add QuartzCore to 'Link Binary With Libraries' in your target's 'Build Phases' (If not already)
-3. If you're not using ARC, add -f-objc-arc to ADFlipTransition.m's compiler flags. (In 'Build Phases' -> 'Compile Sources'
+3. If you're not using ARC, add -f-objc-arc to ADFlipTransition.m's compiler flags. (In 'Build Phases' -> 'Compile Sources')
 
 ## Using ADFlipTransition ##
 
