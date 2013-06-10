@@ -39,6 +39,7 @@
 @property (nonatomic) UIImage *destinationImage;
 
 @property (nonatomic) UIView *shadowView;
+@property (nonatomic) UITapGestureRecognizer *shadowTapGesture;
 @property (nonatomic) BOOL presented;
 
 @end
@@ -61,6 +62,9 @@
 		_shadowView = [[UIView alloc] init];
 		[[self shadowView] setFrame:CGRectMake(0, 0, 1024, 1024)];
 		[[self shadowView] setBackgroundColor:[UIColor colorWithWhite:0 alpha:0.5]];
+		
+		_shadowTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(shadowViewTapped:)];
+		[[self shadowView] addGestureRecognizer:[self shadowTapGesture]];
 		
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deviceOrientationDidChange:) name:UIDeviceOrientationDidChangeNotification object:nil];
 	}
@@ -212,11 +216,19 @@
 	return CGRectMake((rect.size.width-size.width)/2+rect.origin.x, (rect.size.height-size.height)/2+rect.origin.y, size.width, size.height);
 }
 
+#pragma mark - Events
+
 - (void)deviceOrientationDidChange:(NSNotification *)note {
 	if (!CGSizeEqualToSize([self destinationSize], CGSizeZero) && [self presented]) {
 		[UIView animateWithDuration:[[UIApplication sharedApplication] statusBarOrientationAnimationDuration] animations:^{
 			[[[self destinationViewController] view] setFrame:[self rectAtCenterOfRect:[self fullScreenRect] withSize:[self destinationSize]]];
 		}];
+	}
+}
+
+- (void)shadowViewTapped:(UITapGestureRecognizer *)sender {
+	if ([self presented]) {
+		[self reverse];
 	}
 }
 
