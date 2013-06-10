@@ -58,6 +58,8 @@ Then to dismiss it:
 - (IBAction)backPressed:(UIButton *)sender {
 	[self dismissFlipWithCompletion:NULL];
 }
+
+@end
 ```
 
 ### From a UICollectionViewController ###
@@ -95,6 +97,8 @@ Dismiss back to a collection/table view controller the same as normal, or you ca
 - (IBAction)backPressed:(UIButton *)sender {
 	[self dismissFlipToIndexPath:[NSIndexPath indexPathForRow:[self pageNumber] inSection:0] withCompletion:NULL];
 }
+
+@end
 ```
 
 For more sample code, check out the demo, included with the repository

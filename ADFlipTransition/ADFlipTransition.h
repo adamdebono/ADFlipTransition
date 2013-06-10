@@ -119,12 +119,16 @@
  * be shown as a child view controller in the given frame. The snapshot image
  * will be taken just before the animation.
  * @param destinationViewController The view controller to present.
+ * @param destinationSize The size for the destination view controller to take
+ * up on the screen.
  */
 - (void)setDestinationViewController:(UIViewController *)destinationViewController asChildWithSize:(CGSize)destinationSize;
 /**
  * Set the view controller to be presented. The view controller will
  * be shown as a child view controller in the given frame.
  * @param destinationViewController The view controller to present.
+ * @param destinationSize The size for the destination view controller to take
+ * up on the screen.
  * @param sourceImage The placeholder image for the source view. Specifying nil
  * will take a snapshot just before the animation.
  */

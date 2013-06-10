@@ -26,17 +26,55 @@
 
 #import "ADFlipTransition.h"
 
+/**
+ * A convenience category on UIViewController to easily present and dismiss
+ * using ADFlipTransition.
+ */
 @interface UIViewController (ADFlipTransition)
 
-//the transition that is presented by this view controller
+/**
+ * A reference to the transition that was performed by this view controller.
+ */
 @property (nonatomic) ADFlipTransition *presentedFlipTransition;
-//the transition that put this view controller on screen
+/**
+ * A reference to the transition that presented this view controller.
+ */
 @property (nonatomic) ADFlipTransition *presentingFlipTransition;
 
+/**
+ * Present a view controller modally from the current view controller using a
+ * flip animation.
+ * @param destinationViewController The view controller to present
+ * @param sourceView A subview of the current view controller to flip from
+ * @param completion A block to run on completion. Can be NULL.
+ */
 - (void)flipToViewController:(UIViewController *)destinationViewController fromView:(UIView *)sourceView withCompletion:(void (^)(void))completion;
+/**
+ * Present a view controller as a child view controller from the current view
+ * controller using a flip animation.
+ * @param destinationViewController The view controller to present
+ * @param sourceView A subview of the current view controller to flip from
+ * @param destinationSize The size for the destination view controller to take
+ * up on the screen.
+ * @param completion A block to run on completion. Can be NULL.
+ */
 - (void)flipToViewController:(UIViewController *)destinationViewController fromView:(UIView *)sourceView asChildWithSize:(CGSize)destinationSize withCompletion:(void (^)(void))completion;
 
+/**
+ * Dismiss the current modal view controller with a flip animation.
+ * @discussion Only works when the current view controller has been presented
+ * using one of the category convenience methods to present the view controller.
+ * @param completion A block to run on completion. Can be NULL.
+ */
 - (void)dismissFlipWithCompletion:(void (^)(void))completion;
+/**
+ * Dismiss the current modal view controller with a flip animation to a cell in 
+ * a UICollectionViewController or UITableViewController.
+ * @discussion Only works when the current view controller has been presented
+ * using one of the category convenience methods to present the view controller.
+ * @param indexPath The location of the cell to flip back to.
+ * @param completion A block to run on completion. Can be NULL.
+ */
 - (void)dismissFlipToIndexPath:(NSIndexPath *)indexPath withCompletion:(void (^)(void))completion;
 
 @end

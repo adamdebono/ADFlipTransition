@@ -25,9 +25,20 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 
+/**
+ * A UIView category to take a snapshot as a UIImage.
+ */
 @interface UIView (Snapshot)
 
+/**
+ * Take a snapshot of the view.
+ * @return The snapshot
+ */
 - (UIImage *)snapshot;
+/**
+ * Take a snapshot of the view at a specific rect.
+ * @return The snapshot
+ */
 - (UIImage *)snapshotAtRect:(CGRect)rect;
 
 @end

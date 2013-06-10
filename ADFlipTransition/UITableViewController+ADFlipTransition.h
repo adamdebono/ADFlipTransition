@@ -24,8 +24,19 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ * A convenience category on UITableViewController to easily present and dismiss
+ * using ADFlipTransition.
+ */
 @interface UITableViewController (ADFlipTransition)
 
+/**
+ * Present a view controller modally from the current view controller using a
+ * flip animation, beginning from a UITableViewCell.
+ * @param destinationViewController The view controller to present
+ * @param indexPath The location of the cell to flip from.
+ * @param completion A block to run on completion. Can be NULL.
+ */
 - (void)flipToViewController:(UIViewController *)destinationViewController fromItemAtIndexPath:(NSIndexPath *)indexPath withCompletion:(void (^)(void))completion;
 
 @end
