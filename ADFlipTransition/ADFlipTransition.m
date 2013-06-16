@@ -92,11 +92,11 @@
 //***********//
 
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_6_0
-- (void)setSourceIndexPath:(NSIndexPath *)indexPath inCollectionViewConroller:(UICollectionViewController *)sourceViewController {
-	[self setSourceIndexPath:indexPath inCollectionViewConroller:sourceViewController withSnapshotImage:nil];
+- (void)setSourceIndexPath:(NSIndexPath *)indexPath inCollectionViewController:(UICollectionViewController *)sourceViewController {
+	[self setSourceIndexPath:indexPath inCollectionViewController:sourceViewController withSnapshotImage:nil];
 }
 
-- (void)setSourceIndexPath:(NSIndexPath *)indexPath inCollectionViewConroller:(UICollectionViewController *)sourceViewController withSnapshotImage:(UIImage *)sourceImage {
+- (void)setSourceIndexPath:(NSIndexPath *)indexPath inCollectionViewController:(UICollectionViewController *)sourceViewController withSnapshotImage:(UIImage *)sourceImage {
 	UICollectionView *collectionView = [sourceViewController collectionView];
 	if (![[collectionView indexPathsForVisibleItems] containsObject:indexPath]) {
 		[collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally|UICollectionViewScrollPositionCenteredVertically animated:NO];
@@ -110,11 +110,11 @@
 }
 #endif
 
-- (void)setSourceIndexPath:(NSIndexPath *)indexPath inTableViewConroller:(UITableViewController *)sourceViewController {
-	[self setSourceIndexPath:indexPath inTableViewConroller:sourceViewController withSnapshotImage:nil];
+- (void)setSourceIndexPath:(NSIndexPath *)indexPath inTableViewController:(UITableViewController *)sourceViewController {
+	[self setSourceIndexPath:indexPath inTableViewController:sourceViewController withSnapshotImage:nil];
 }
 
-- (void)setSourceIndexPath:(NSIndexPath *)indexPath inTableViewConroller:(UITableViewController *)sourceViewController withSnapshotImage:(UIImage *)sourceImage {
+- (void)setSourceIndexPath:(NSIndexPath *)indexPath inTableViewController:(UITableViewController *)sourceViewController withSnapshotImage:(UIImage *)sourceImage {
 	UITableViewCell *cell = [[sourceViewController tableView] cellForRowAtIndexPath:indexPath];
 	[self setSourceView:cell inViewController:sourceViewController withSnapshotImage:sourceImage];
 }
@@ -122,7 +122,7 @@
 - (void)updateIndexPath:(NSIndexPath *)indexPath {
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_6_0
 	if ([[self sourceViewController] isKindOfClass:[UICollectionViewController class]]) {
-		[self setSourceIndexPath:indexPath inCollectionViewConroller:(UICollectionViewController *)[self sourceViewController] withSnapshotImage:[self sourceImage]];
+		[self setSourceIndexPath:indexPath inCollectionViewController:(UICollectionViewController *)[self sourceViewController] withSnapshotImage:[self sourceImage]];
 	} else
 #endif
 			if ([[self sourceViewController] isKindOfClass:[UITableViewController class]]) {
@@ -131,7 +131,7 @@
 			[tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
 		}
 		
-		[self setSourceIndexPath:indexPath inTableViewConroller:(UITableViewController *)[self sourceViewController] withSnapshotImage:[self sourceImage]];
+		[self setSourceIndexPath:indexPath inTableViewController:(UITableViewController *)[self sourceViewController] withSnapshotImage:[self sourceImage]];
 	}
 }
 

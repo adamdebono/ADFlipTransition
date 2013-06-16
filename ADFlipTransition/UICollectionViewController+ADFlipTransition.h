@@ -40,6 +40,16 @@
  * @param completion A block to run on completion. Can be NULL.
  */
 - (void)flipToViewController:(UIViewController *)destinationViewController fromItemAtIndexPath:(NSIndexPath *)indexPath withCompletion:(void (^)(void))completion;
+/**
+ * Present a view controller modally from the current view controller using a
+ * flip animation, beginning from a UICollectionViewCell.
+ * @param destinationViewController The view controller to present
+ * @param indexPath The location of the cell to flip from.
+ * @param destinationSize The size for the destination view controller to take
+ * up on the screen.
+ * @param completion A block to run on completion. Can be NULL.
+ */
+- (void)flipToViewController:(UIViewController *)destinationViewController fromItemAtIndexPath:(NSIndexPath *)indexPath asChildWithSize:(CGSize)destinationSize withCompletion:(void (^)(void))completion;
 
 @end
 

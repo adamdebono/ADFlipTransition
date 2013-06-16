@@ -61,7 +61,7 @@
  * @param indexPath The index path indicating the cell to animate from
  * @param sourceViewController The view controller to present from.
  */
-- (void)setSourceIndexPath:(NSIndexPath *)indexPath inCollectionViewConroller:(UICollectionViewController *)sourceViewController;
+- (void)setSourceIndexPath:(NSIndexPath *)indexPath inCollectionViewController:(UICollectionViewController *)sourceViewController;
 /**
  * Setup the sources for the transition from a
  * UICollectionViewController. The source view will be automatically taken from
@@ -71,7 +71,7 @@
  * @param sourceImage The placeholder image for the source view. Specifying nil
  * will take a snapshot just before the animation.
  */
-- (void)setSourceIndexPath:(NSIndexPath *)indexPath inCollectionViewConroller:(UICollectionViewController *)sourceViewController withSnapshotImage:(UIImage *)sourceImage;
+- (void)setSourceIndexPath:(NSIndexPath *)indexPath inCollectionViewController:(UICollectionViewController *)sourceViewController withSnapshotImage:(UIImage *)sourceImage;
 #endif
 
 /**
@@ -82,7 +82,7 @@
  * @param indexPath The index path indicating the cell to animate from
  * @param sourceViewController The view controller to present from.
  */
-- (void)setSourceIndexPath:(NSIndexPath *)indexPath inTableViewConroller:(UITableViewController *)sourceViewController;
+- (void)setSourceIndexPath:(NSIndexPath *)indexPath inTableViewController:(UITableViewController *)sourceViewController;
 /**
  * Setup the sources for the transition from a UITableViewController.
  * The source view will be automatically taken from the indexPath, and if
@@ -92,7 +92,7 @@
  * @param sourceImage The placeholder image for the source view. Specifying nil
  * will take a snapshot just before the animation.
  */
-- (void)setSourceIndexPath:(NSIndexPath *)indexPath inTableViewConroller:(UITableViewController *)sourceViewController withSnapshotImage:(UIImage *)sourceImage;
+- (void)setSourceIndexPath:(NSIndexPath *)indexPath inTableViewController:(UITableViewController *)sourceViewController withSnapshotImage:(UIImage *)sourceImage;
 
 /**
  * Update the index path when using a UICollectionViewController or

@@ -32,8 +32,19 @@
 
 - (void)flipToViewController:(UIViewController *)destinationViewController fromItemAtIndexPath:(NSIndexPath *)indexPath withCompletion:(void (^)(void))completion {
 	ADFlipTransition *transition = [[ADFlipTransition alloc] init];
-	[transition setSourceIndexPath:indexPath inCollectionViewConroller:self];
+	[transition setSourceIndexPath:indexPath inCollectionViewController:self];
 	[transition setDestinationViewController:destinationViewController];
+	
+	[self setPresentedFlipTransition:transition];
+	[destinationViewController setPresentingFlipTransition:transition];
+	
+	[transition performWithCompletion:completion];
+}
+
+- (void)flipToViewController:(UIViewController *)destinationViewController fromItemAtIndexPath:(NSIndexPath *)indexPath asChildWithSize:(CGSize)destinationSize withCompletion:(void (^)(void))completion {
+	ADFlipTransition *transition = [[ADFlipTransition alloc] init];
+	[transition setSourceIndexPath:indexPath inCollectionViewController:self];
+	[transition setDestinationViewController:destinationViewController asChildWithSize:destinationSize];
 	
 	[self setPresentedFlipTransition:transition];
 	[destinationViewController setPresentingFlipTransition:transition];
