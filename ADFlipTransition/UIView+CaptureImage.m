@@ -22,23 +22,29 @@
  * SOFTWARE.
  */
 
-#import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 
-/**
- * A UIView category to take a snapshot as a UIImage.
- */
-@interface UIView (Snapshot)
+#import "UIView+CaptureImage.h"
 
-/**
- * Take a snapshot of the view.
- * @return The snapshot
- */
-- (UIImage *)snapshot;
-/**
- * Take a snapshot of the view at a specific rect.
- * @return The snapshot
- */
-- (UIImage *)snapshotAtRect:(CGRect)rect;
+@implementation UIView (CapatureImage)
+
+- (UIImage *)captureImage {
+	return [self captureImageAtRect:CGRectNull];
+}
+
+- (UIImage *)captureImageAtRect:(CGRect)rect {
+	if (CGRectEqualToRect(rect, CGRectNull)) {
+		rect = [self bounds];
+	}
+	
+	UIGraphicsBeginImageContext(rect.size);
+	CGContextRef context = UIGraphicsGetCurrentContext();
+	CGContextTranslateCTM(context, rect.origin.x, rect.origin.y);
+	[[self layer] renderInContext:context];
+	UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+	UIGraphicsEndImageContext();
+	
+	return image;
+}
 
 @end

@@ -22,9 +22,12 @@
  * SOFTWARE.
  */
 
+#import <QuartzCore/QuartzCore.h>
+#import <CoreImage/CoreImage.h>
+
 #import "ADFlipTransition.h"
 
-#import "UIView+Snapshot.h"
+#import "UIView+CaptureImage.h"
 
 @class UITransitionView;
 
@@ -286,7 +289,7 @@
 	}
 	
 	//create the destination animation view
-	UIImage *destImage = [self destinationImage]?[self destinationImage]:[[[self destinationViewController] view] snapshot];
+	UIImage *destImage = [self destinationImage]?[self destinationImage]:[[[self destinationViewController] view] captureImage];
 	UIImageView *destView = [[UIImageView alloc] initWithImage:destImage];
 	[destView setFrame:destFrame];
 	[[destView layer] setZPosition:1024];
@@ -294,7 +297,7 @@
 	[[[self destinationViewController] view] setHidden:YES];
 	
 	//create the source animation view and hide the original
-	UIImage *srcImage = [self sourceImage]?[self sourceImage]:[[self sourceView] snapshot];
+	UIImage *srcImage = [self sourceImage]?[self sourceImage]:[[self sourceView] captureImage];
 	UIImageView *srcView = [[UIImageView alloc] initWithImage:srcImage];
 	[srcView setFrame:srcFrame];
 	[[srcView layer] setZPosition:1024];
@@ -381,7 +384,7 @@
 	CGRect srcFrame = [self actualRectInView:[self sourceView]];
 	
 	//create the destination animation view
-	UIImage *destImage = [self destinationImage]?[self destinationImage]:[[[self destinationViewController] view] snapshot];
+	UIImage *destImage = [self destinationImage]?[self destinationImage]:[[[self destinationViewController] view] captureImage];
 	UIImageView *destView = [[UIImageView alloc] initWithImage:destImage];
 	[destView setFrame:destFrame];
 	[[destView layer] setZPosition:1024];
@@ -398,7 +401,7 @@
 	
 	//create the source animation view and hide the original
 	[[self sourceView] setHidden:NO];
-	UIImage *srcImage = [self sourceImage]?[self sourceImage]:[[self sourceView] snapshot];
+	UIImage *srcImage = [self sourceImage]?[self sourceImage]:[[self sourceView] captureImage];
 	UIImageView *srcView = [[UIImageView alloc] initWithImage:srcImage];
 	[srcView setFrame:srcFrame];
 	[[srcView layer] setZPosition:1024];

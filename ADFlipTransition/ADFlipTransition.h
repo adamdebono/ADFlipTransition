@@ -24,7 +24,6 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import <QuartzCore/QuartzCore.h>
 
 /**
  * An object which coordinates a custom flip transition to present a view controller.

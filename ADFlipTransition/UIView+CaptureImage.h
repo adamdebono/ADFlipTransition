@@ -22,27 +22,22 @@
  * SOFTWARE.
  */
 
-#import "UIView+Snapshot.h"
+#import <UIKit/UIKit.h>
 
-@implementation UIView (Snapshot)
+/**
+ * A UIView category to take a snapshot as a UIImage.
+ */
+@interface UIView (CaptureImage)
 
-- (UIImage *)snapshot {
-	return [self snapshotAtRect:CGRectNull];
-}
-
-- (UIImage *)snapshotAtRect:(CGRect)rect {
-	if (CGRectEqualToRect(rect, CGRectNull)) {
-		rect = [self bounds];
-	}
-	
-	UIGraphicsBeginImageContext(rect.size);
-	CGContextRef context = UIGraphicsGetCurrentContext();
-	CGContextTranslateCTM(context, rect.origin.x, rect.origin.y);
-	[[self layer] renderInContext:context];
-	UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-	UIGraphicsEndImageContext();
-	
-	return image;
-}
+/**
+ * Take a snapshot of the view.
+ * @return The snapshot
+ */
+- (UIImage *)captureImage;
+/**
+ * Take a snapshot of the view at a specific rect.
+ * @return The snapshot
+ */
+- (UIImage *)captureImageAtRect:(CGRect)rect;
 
 @end

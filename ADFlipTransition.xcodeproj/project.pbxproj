@@ -10,7 +10,10 @@
 		A230220B175891BA00F247FF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A230220A175891BA00F247FF /* Foundation.framework */; };
 		A2302210175891BA00F247FF /* ADFlipTransition.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A230220F175891BA00F247FF /* ADFlipTransition.h */; };
 		A2302212175891BA00F247FF /* ADFlipTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = A2302211175891BA00F247FF /* ADFlipTransition.m */; };
-		A230221D1758C85D00F247FF /* UIView+Snapshot.m in Sources */ = {isa = PBXBuildFile; fileRef = A230221C1758C85D00F247FF /* UIView+Snapshot.m */; };
+		A230221D1758C85D00F247FF /* UIView+CaptureImage.m in Sources */ = {isa = PBXBuildFile; fileRef = A230221C1758C85D00F247FF /* UIView+CaptureImage.m */; };
+		A25D1D55177081B9000C6EEC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A267E36E17640A780059C236 /* QuartzCore.framework */; };
+		A25D1D56177081BE000C6EEC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A267E330176406670059C236 /* UIKit.framework */; };
+		A25D1D58177081C3000C6EEC /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A25D1D57177081C3000C6EEC /* CoreImage.framework */; };
 		A267E3241763FBCE0059C236 /* UIViewController+ADFlipTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = A267E3231763FBCE0059C236 /* UIViewController+ADFlipTransition.m */; };
 		A267E327176400450059C236 /* UICollectionViewController+ADFlipTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = A267E326176400450059C236 /* UICollectionViewController+ADFlipTransition.m */; };
 		A267E32A1764048D0059C236 /* UITableViewController+ADFlipTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = A267E3291764048D0059C236 /* UITableViewController+ADFlipTransition.m */; };
@@ -64,8 +67,9 @@
 		A230220E175891BA00F247FF /* ADFlipTransition-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ADFlipTransition-Prefix.pch"; sourceTree = "<group>"; };
 		A230220F175891BA00F247FF /* ADFlipTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ADFlipTransition.h; sourceTree = "<group>"; };
 		A2302211175891BA00F247FF /* ADFlipTransition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ADFlipTransition.m; sourceTree = "<group>"; };
-		A230221B1758C85D00F247FF /* UIView+Snapshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Snapshot.h"; sourceTree = "<group>"; };
-		A230221C1758C85D00F247FF /* UIView+Snapshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Snapshot.m"; sourceTree = "<group>"; };
+		A230221B1758C85D00F247FF /* UIView+CaptureImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CaptureImage.h"; sourceTree = "<group>"; };
+		A230221C1758C85D00F247FF /* UIView+CaptureImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CaptureImage.m"; sourceTree = "<group>"; };
+		A25D1D57177081C3000C6EEC /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		A267E3221763FBCE0059C236 /* UIViewController+ADFlipTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ADFlipTransition.h"; sourceTree = "<group>"; };
 		A267E3231763FBCE0059C236 /* UIViewController+ADFlipTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ADFlipTransition.m"; sourceTree = "<group>"; };
 		A267E325176400450059C236 /* UICollectionViewController+ADFlipTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UICollectionViewController+ADFlipTransition.h"; sourceTree = "<group>"; };
@@ -108,7 +112,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A25D1D58177081C3000C6EEC /* CoreImage.framework in Frameworks */,
 				A230220B175891BA00F247FF /* Foundation.framework in Frameworks */,
+				A25D1D55177081B9000C6EEC /* QuartzCore.framework in Frameworks */,
+				A25D1D56177081BE000C6EEC /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,6 +158,7 @@
 		A2302209175891BA00F247FF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A25D1D57177081C3000C6EEC /* CoreImage.framework */,
 				A267E36E17640A780059C236 /* QuartzCore.framework */,
 				A230220A175891BA00F247FF /* Foundation.framework */,
 				A267E330176406670059C236 /* UIKit.framework */,
@@ -165,8 +173,8 @@
 				A230220F175891BA00F247FF /* ADFlipTransition.h */,
 				A2302211175891BA00F247FF /* ADFlipTransition.m */,
 				A230220D175891BA00F247FF /* Supporting Files */,
-				A230221B1758C85D00F247FF /* UIView+Snapshot.h */,
-				A230221C1758C85D00F247FF /* UIView+Snapshot.m */,
+				A230221B1758C85D00F247FF /* UIView+CaptureImage.h */,
+				A230221C1758C85D00F247FF /* UIView+CaptureImage.m */,
 				A267E3221763FBCE0059C236 /* UIViewController+ADFlipTransition.h */,
 				A267E3231763FBCE0059C236 /* UIViewController+ADFlipTransition.m */,
 				A267E325176400450059C236 /* UICollectionViewController+ADFlipTransition.h */,
@@ -311,7 +319,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A2302212175891BA00F247FF /* ADFlipTransition.m in Sources */,
-				A230221D1758C85D00F247FF /* UIView+Snapshot.m in Sources */,
+				A230221D1758C85D00F247FF /* UIView+CaptureImage.m in Sources */,
 				A267E3241763FBCE0059C236 /* UIViewController+ADFlipTransition.m in Sources */,
 				A267E327176400450059C236 /* UICollectionViewController+ADFlipTransition.m in Sources */,
 				A267E32A1764048D0059C236 /* UITableViewController+ADFlipTransition.m in Sources */,
