@@ -37,7 +37,7 @@
 		rect = [self bounds];
 	}
 	
-	UIGraphicsBeginImageContext(rect.size);
+	UIGraphicsBeginImageContextWithOptions(rect.size, NO, [[UIScreen mainScreen] scale]);
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	CGContextTranslateCTM(context, rect.origin.x, rect.origin.y);
 	[[self layer] renderInContext:context];
