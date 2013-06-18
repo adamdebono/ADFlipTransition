@@ -340,9 +340,9 @@
 			
 			if (modal) {
 				[srcViewController presentViewController:[self destinationViewController] animated:NO completion:NULL];
+				[[self sourceView] setHidden:NO];
 			}
 			
-			[[self sourceView] setHidden:NO];
 			[[[self destinationViewController] view] setHidden:NO];
 			
 			[[UIApplication sharedApplication] endIgnoringInteractionEvents];
@@ -397,6 +397,7 @@
 	}
 	
 	//create the source animation view and hide the original
+	[[self sourceView] setHidden:NO];
 	UIImage *srcImage = [self sourceImage]?[self sourceImage]:[[self sourceView] snapshot];
 	UIImageView *srcView = [[UIImageView alloc] initWithImage:srcImage];
 	[srcView setFrame:srcFrame];
