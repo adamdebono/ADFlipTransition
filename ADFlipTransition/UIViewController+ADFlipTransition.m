@@ -55,13 +55,21 @@ static NSString *const kPresentingFlipTransitionKey = @"kPresentingFlipTransitio
 #pragma mark - Performing
 
 - (void)flipToViewController:(UIViewController *)destinationViewController fromView:(UIView *)sourceView withCompletion:(void (^)(void))completion {
-	[self flipToViewController:destinationViewController fromView:sourceView asChildWithSize:CGSizeZero withCompletion:NULL];
+	[self flipToViewController:destinationViewController fromView:sourceView withSourceSnapshotImage:nil andDestinationSnapshot:nil withCompletion:completion];
+}
+
+- (void)flipToViewController:(UIViewController *)destinationViewController fromView:(UIView *)sourceView withSourceSnapshotImage:(UIImage *)sourceSnapshot andDestinationSnapshot:(UIImage *)destinationSnapshot withCompletion:(void (^)(void))completion {
+	[self flipToViewController:destinationViewController fromView:sourceView asChildWithSize:CGSizeZero withSourceSnapshotImage:sourceSnapshot andDestinationSnapshot:destinationSnapshot withCompletion:completion];
 }
 
 - (void)flipToViewController:(UIViewController *)destinationViewController fromView:(UIView *)sourceView asChildWithSize:(CGSize)destinationSize withCompletion:(void (^)(void))completion {
+	[self flipToViewController:destinationViewController fromView:sourceView asChildWithSize:destinationSize withSourceSnapshotImage:nil andDestinationSnapshot:nil withCompletion:completion];
+}
+
+- (void)flipToViewController:(UIViewController *)destinationViewController fromView:(UIView *)sourceView withSourceSnapshotImage:(UIImage *)sourceSnapshot andDestinationSnapshot:(UIImage *)destinationSnapshot asChildWithSize:(CGSize)destinationSize withCompletion:(void (^)(void))completion {
 	ADFlipTransition *transition = [[ADFlipTransition alloc] init];
-	[transition setSourceView:sourceView inViewController:self];
-	[transition setDestinationViewController:destinationViewController asChildWithSize:destinationSize];
+	[transition setSourceView:sourceView inViewController:self withSnapshotImage:sourceSnapshot];
+	[transition setDestinationViewController:destinationViewController asChildWithSize:destinationSize withSnapshotImage:destinationSnapshot];
 	
 	[self setPresentedFlipTransition:transition];
 	[destinationViewController setPresentingFlipTransition:transition];

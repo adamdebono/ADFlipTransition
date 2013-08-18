@@ -29,20 +29,21 @@
 @implementation UITableViewController (ADFlipTransition)
 
 - (void)flipToViewController:(UIViewController *)destinationViewController fromItemAtIndexPath:(NSIndexPath *)indexPath withCompletion:(void (^)(void))completion {
-	ADFlipTransition *transition = [[ADFlipTransition alloc] init];
-	[transition setSourceIndexPath:indexPath inTableViewController:self];
-	[transition setDestinationViewController:destinationViewController];
-	
-	[self setPresentedFlipTransition:transition];
-	[destinationViewController setPresentingFlipTransition:transition];
-	
-	[transition performWithCompletion:completion];
+	[self flipToViewController:destinationViewController fromItemAtIndexPath:indexPath withSourceSnapshotImage:nil andDestinationSnapshot:nil withCompletion:completion];
+}
+
+- (void)flipToViewController:(UIViewController *)destinationViewController fromItemAtIndexPath:(NSIndexPath *)indexPath withSourceSnapshotImage:(UIImage *)sourceSnapshot andDestinationSnapshot:(UIImage *)destinationSnapshot withCompletion:(void (^)(void))completion {
+	[self flipToViewController:destinationViewController fromItemAtIndexPath:indexPath asChildWithSize:CGSizeZero withSourceSnapshotImage:sourceSnapshot andDestinationSnapshot:destinationSnapshot withCompletion:completion];
 }
 
 - (void)flipToViewController:(UIViewController *)destinationViewController fromItemAtIndexPath:(NSIndexPath *)indexPath asChildWithSize:(CGSize)destinationSize withCompletion:(void (^)(void))completion {
+	[self flipToViewController:destinationViewController fromItemAtIndexPath:indexPath asChildWithSize:destinationSize withSourceSnapshotImage:nil andDestinationSnapshot:nil withCompletion:completion];
+}
+
+- (void)flipToViewController:(UIViewController *)destinationViewController fromItemAtIndexPath:(NSIndexPath *)indexPath asChildWithSize:(CGSize)destinationSize withSourceSnapshotImage:(UIImage *)sourceSnapshot andDestinationSnapshot:(UIImage *)destinationSnapshot withCompletion:(void (^)(void))completion {
 	ADFlipTransition *transition = [[ADFlipTransition alloc] init];
-	[transition setSourceIndexPath:indexPath inTableViewController:self];
-	[transition setDestinationViewController:destinationViewController asChildWithSize:destinationSize];
+	[transition setSourceIndexPath:indexPath inTableViewController:self withSnapshotImage:sourceSnapshot];
+	[transition setDestinationViewController:destinationViewController asChildWithSize:destinationSize withSnapshotImage:destinationSnapshot];
 	
 	[self setPresentedFlipTransition:transition];
 	[destinationViewController setPresentingFlipTransition:transition];
