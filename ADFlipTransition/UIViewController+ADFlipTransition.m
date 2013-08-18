@@ -66,7 +66,7 @@ static NSString *const kPresentingFlipTransitionKey = @"kPresentingFlipTransitio
 	[self flipToViewController:destinationViewController fromView:sourceView asChildWithSize:destinationSize withSourceSnapshotImage:nil andDestinationSnapshot:nil withCompletion:completion];
 }
 
-- (void)flipToViewController:(UIViewController *)destinationViewController fromView:(UIView *)sourceView withSourceSnapshotImage:(UIImage *)sourceSnapshot andDestinationSnapshot:(UIImage *)destinationSnapshot asChildWithSize:(CGSize)destinationSize withCompletion:(void (^)(void))completion {
+- (void)flipToViewController:(UIViewController *)destinationViewController fromView:(UIView *)sourceView asChildWithSize:(CGSize)destinationSize withSourceSnapshotImage:(UIImage *)sourceSnapshot andDestinationSnapshot:(UIImage *)destinationSnapshot withCompletion:(void (^)(void))completion {
 	ADFlipTransition *transition = [[ADFlipTransition alloc] init];
 	[transition setSourceView:sourceView inViewController:self withSnapshotImage:sourceSnapshot];
 	[transition setDestinationViewController:destinationViewController asChildWithSize:destinationSize withSnapshotImage:destinationSnapshot];
