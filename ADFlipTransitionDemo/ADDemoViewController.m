@@ -46,7 +46,9 @@
 	[viewController view];
 	[viewController hideStepper];
 	
-	[self flipToViewController:viewController fromView:sender withCompletion:NULL];
+	[self flipToViewController:viewController fromView:sender withCompletion:^{
+        NSLog(@"%@", @"Flipped");
+    }];
 }
 
 - (IBAction)flipAsChild:(id)sender {
@@ -55,7 +57,9 @@
 	[viewController view];
 	[viewController hideStepper];
 	
-	[self flipToViewController:viewController fromView:sender asChildWithSize:CGSizeMake(350, 350) withCompletion:NULL];
+	[self flipToViewController:viewController fromView:sender asChildWithSize:CGSizeMake(350, 350) withCompletion:^{
+        NSLog(@"%@", @"Flipped");
+    }];
 }
 
 @end

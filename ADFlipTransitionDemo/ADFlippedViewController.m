@@ -57,9 +57,13 @@
 
 - (IBAction)backPressed:(id)sender {
 	if ([[self cellNumberStepper] isHidden]) {
-		[self dismissFlipWithCompletion:NULL];
+		[self dismissFlipWithCompletion:^{
+            NSLog(@"%@", @"Dismissed");
+        }];
 	} else {
-		[self dismissFlipToIndexPath:[NSIndexPath indexPathForRow:[[self cellNumberStepper] value] inSection:0] withCompletion:NULL];
+		[self dismissFlipToIndexPath:[NSIndexPath indexPathForRow:[[self cellNumberStepper] value] inSection:0] withCompletion:^{
+            NSLog(@"%@", @"Dismissed");
+        }];
 	}
 }
 

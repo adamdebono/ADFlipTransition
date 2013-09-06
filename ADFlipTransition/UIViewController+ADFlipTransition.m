@@ -79,7 +79,7 @@ static NSString *const kPresentingFlipTransitionKey = @"kPresentingFlipTransitio
 
 - (void)dismissFlipWithCompletion:(void (^)(void))completion {
 	if ([self getPresentingFlipTransition]) {
-		[[self getPresentingFlipTransition] reverse];
+		[[self getPresentingFlipTransition] reverseWithCompletion:completion];
 	} else {
 		NSLog(@"View wasn't presented by a flip transition");
 	}

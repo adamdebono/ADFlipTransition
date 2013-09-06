@@ -59,7 +59,9 @@
 	[viewController view];
 	[viewController setCellNumber:[indexPath row]];
 	
-    [self flipToViewController:viewController fromItemAtIndexPath:indexPath withCompletion:NULL];
+    [self flipToViewController:viewController fromItemAtIndexPath:indexPath withCompletion:^{
+        NSLog(@"%@", @"Flipped");
+    }];
 }
 
 @end
