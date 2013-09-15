@@ -63,8 +63,9 @@
 		_presented = NO;
 		
 		_shadowView = [[UIView alloc] init];
-		[[self shadowView] setFrame:CGRectMake(0, 0, 1024, 1024)];
+		[[self shadowView] setFrame:CGRectZero];
 		[[self shadowView] setBackgroundColor:[UIColor colorWithWhite:0 alpha:0.5]];
+		[[self shadowView] setAutoresizingMask:UIViewAutoresizingFlexibleBottomMargin|UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleWidth];
 		
 		_shadowTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(shadowViewTapped:)];
 		[[self shadowView] addGestureRecognizer:[self shadowTapGesture]];
@@ -195,7 +196,9 @@
 	UIWindow *window = [[UIApplication sharedApplication] keyWindow];
 	
 	CGRect rect = [window frame];
-	if ([[UIApplication sharedApplication] statusBarStyle] == UIStatusBarStyleBlackOpaque) {
+	if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0f) {
+		rect = [self switchRectOrientation:rect];
+	} else if ([[UIApplication sharedApplication] statusBarStyle] == UIStatusBarStyleBlackOpaque) {
 		CGFloat height = UIInterfaceOrientationIsPortrait([[UIApplication sharedApplication] statusBarOrientation])?[[UIApplication sharedApplication] statusBarFrame].size.height:[[UIApplication sharedApplication] statusBarFrame].size.width;
 		
 		if (UIInterfaceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation])) {
@@ -248,7 +251,7 @@
 	
 	BOOL modal;
 	
-	CGRect destFrame;
+	CGRect destFrame = CGRectZero;
 	CGRect srcFrame = [self actualRectInView:[self sourceView]];
 	
 	UIViewController *srcViewController = [self sourceViewController];
@@ -270,7 +273,7 @@
 		modal = NO;
 		
 		//add a shadow view
-		[[self shadowView] setCenter:[[srcViewController view] center]];
+		[[self shadowView] setFrame:[[srcViewController view] bounds]];
 		[[srcViewController view] addSubview:[self shadowView]];
 		[[self shadowView] setAlpha:0];
 		
@@ -281,6 +284,7 @@
 		destFrame = [self rectAtCenterOfRect:[self fullScreenRect] withSize:[self destinationSize]];
 		
 		[[[self destinationViewController] view] setFrame:destFrame];
+		[[[self destinationViewController] view] setAutoresizingMask:UIViewAutoresizingNone];
 		[[srcViewController view] addSubview:[[self destinationViewController] view]];
 		
 		[[[[self destinationViewController] view] layer] setMasksToBounds:YES];
