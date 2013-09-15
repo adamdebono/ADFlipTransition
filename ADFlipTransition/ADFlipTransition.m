@@ -320,7 +320,7 @@
 	//perform the first half of the animation
 	CATransform3D srcTransform = CATransform3DMakeRotation(M_PI/2, 0, 1, 0);
 	srcTransform.m34 = 1.0f/-500;
-	[UIView animateWithDuration:[self animationDuration]/2 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+	[UIView animateWithDuration:[self animationDuration]/3 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
 		[[srcView layer] setTransform:srcTransform];
 		[srcView setFrame:halfwayFrame];
 		if (!modal) {
@@ -334,7 +334,7 @@
 		//perform the second half of the animation
 		CATransform3D destTransform = CATransform3DMakeRotation(0, 0, 1, 0);
 		destTransform.m34 = 1.0f/-500;
-		[UIView animateWithDuration:[self animationDuration]/2 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+		[UIView animateWithDuration:[self animationDuration]/3*2 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
 			[[destView layer] setTransform:destTransform];
 			[destView setFrame:destFrame];
 			
@@ -425,7 +425,7 @@
 	//perform the first half of the animation
 	CATransform3D destTransform = CATransform3DMakeRotation(-M_PI/2, 0, 1, 0);
 	destTransform.m34 = 1.0f/-500;
-	[UIView animateWithDuration:[self animationDuration]/2 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+	[UIView animateWithDuration:[self animationDuration]/3 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
 		[[destView layer] setTransform:destTransform];
 		[destView setFrame:halfwayFrame];
 		
@@ -440,7 +440,7 @@
 		[srcView setHidden:NO];
 		CATransform3D srcTransform = CATransform3DMakeRotation(0, 0, 1, 0);
 		srcTransform.m34 = 1.0f/-500;
-		[UIView animateWithDuration:[self animationDuration]/2 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+		[UIView animateWithDuration:[self animationDuration]/3*2 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
 			[[srcView layer] setTransform:srcTransform];
 			[srcView setFrame:srcFrame];
 			
