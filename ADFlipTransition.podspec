@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 	s.name = 'ADFlipTransition'
-	s.version = '0.9.0'
+	s.version = '0.9.1'
 	s.license = 'MIT'
 	s.summary = 'An alternative presentation animation for iOS'
 	s.authors = {
@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
 	}
 	s.source = {
 		:git => 'https://github.com/adamdebono/ADFlipTransition.git'
-		:tag => '0.9.0'
+		:tag => '0.9.1'
 	}
 	s.source_files = 'ADFlipTransition'
 	
