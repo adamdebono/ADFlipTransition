@@ -60,6 +60,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		84A8B16817E54F16001B0A2A /* ADFlipTransition.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ADFlipTransition.podspec; sourceTree = "<group>"; };
 		A2302207175891BA00F247FF /* libADFlipTransition.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libADFlipTransition.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A230220A175891BA00F247FF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A230220E175891BA00F247FF /* ADFlipTransition-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ADFlipTransition-Prefix.pch"; sourceTree = "<group>"; };
@@ -132,6 +133,7 @@
 		A23021FE175891BA00F247FF = {
 			isa = PBXGroup;
 			children = (
+				84A8B16817E54F16001B0A2A /* ADFlipTransition.podspec */,
 				A2C721B91764C8F400817817 /* License.txt */,
 				A2C721BA1764C8F400817817 /* Readme.md */,
 				A230220C175891BA00F247FF /* ADFlipTransition */,
