@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
 		'Adam Debono' => 'adam@adebono.com'
 	}
 	s.source = {
-		:git => 'https://github.com/adamdebono/ADFlipTransition.git'
+		:git => 'https://github.com/adamdebono/ADFlipTransition.git',
 		:tag => '0.9.1'
 	}
 	s.source_files = 'ADFlipTransition'
