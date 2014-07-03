@@ -196,18 +196,23 @@
 	UIWindow *window = [[UIApplication sharedApplication] keyWindow];
 	
 	CGRect rect = [window frame];
+    
+    //In iOS 8 the window rect now has the correct orientation, so you dont need to switch if in landscape
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0f) {
+        return rect;
+    }
+    
+    if (UIInterfaceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation])) {
+        rect = [self switchRectOrientation:rect];
+    }
+    
 	if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0f) {
-		rect = [self switchRectOrientation:rect];
-	} else if ([[UIApplication sharedApplication] statusBarStyle] == UIStatusBarStyleBlackOpaque) {
-		CGFloat height = UIInterfaceOrientationIsPortrait([[UIApplication sharedApplication] statusBarOrientation])?[[UIApplication sharedApplication] statusBarFrame].size.height:[[UIApplication sharedApplication] statusBarFrame].size.width;
-		
-		if (UIInterfaceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation])) {
-			rect = [self switchRectOrientation:rect];
-		}
-		
-		rect.origin.y += height;
-		rect.size.height -= height;
+        return rect;
 	}
+    
+    CGFloat statusBarHeight = UIInterfaceOrientationIsPortrait([[UIApplication sharedApplication] statusBarOrientation])?[[UIApplication sharedApplication] statusBarFrame].size.height: [[UIApplication sharedApplication] statusBarFrame].size.width;
+    rect.origin.y += statusBarHeight;
+    rect.size.height -= statusBarHeight;
 	
 	return rect;
 }
