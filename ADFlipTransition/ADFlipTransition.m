@@ -266,7 +266,7 @@
 		[srcViewController addChildViewController:[self destinationViewController]];
 		[[self destinationViewController] didMoveToParentViewController:srcViewController];
 		
-		destFrame = [self rectAtCenterOfRect:[self fullScreenRect] withSize:[self destinationSize]];
+		destFrame = [self rectAtCenterOfRect:[[srcViewController view] bounds] withSize:[self destinationSize]];
 		
 		[[[self destinationViewController] view] setFrame:destFrame];
 		[[[self destinationViewController] view] setAutoresizingMask:UIViewAutoresizingNone];
