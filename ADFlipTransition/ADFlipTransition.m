@@ -174,22 +174,7 @@
 }
 
 - (CGRect)actualRectInView:(UIView *)view {
-	Class transition = NSClassFromString(@"UITransitionView");
-	Class layoutContainer = NSClassFromString(@"UILayoutContainerView");
-	
-	CGRect frame = [view frame];
-	UIView *superview = [view superview];
-	while (superview && ![superview isKindOfClass:transition] && ![superview isKindOfClass:layoutContainer]) {
-		CGRect newFrame = [[superview superview] convertRect:frame fromView:superview];
-		if (CGRectEqualToRect(newFrame, CGRectZero)) {
-			break;
-		}
-		frame = newFrame;
-				
-		superview = [superview superview];
-	}
-	
-	return frame;
+	return [ self.sourceView convertRect: self.sourceView.bounds toView: self.sourceViewController.view ];
 }
 
 - (CGRect)fullScreenRect {
