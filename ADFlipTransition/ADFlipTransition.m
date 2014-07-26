@@ -37,7 +37,7 @@
 @property (nonatomic) UIView *sourceView;
 @property (nonatomic) UIImage *sourceImage;
 
-@property (nonatomic) UIViewController *destinationViewController;
+@property (nonatomic, weak) UIViewController *destinationViewController;
 @property (nonatomic) CGSize destinationSize;
 @property (nonatomic) UIImage *destinationImage;
 
@@ -174,22 +174,7 @@
 }
 
 - (CGRect)actualRectInView:(UIView *)view {
-	Class transition = NSClassFromString(@"UITransitionView");
-	Class layoutContainer = NSClassFromString(@"UILayoutContainerView");
-	
-	CGRect frame = [view frame];
-	UIView *superview = [view superview];
-	while (superview && ![superview isKindOfClass:transition] && ![superview isKindOfClass:layoutContainer]) {
-		CGRect newFrame = [[superview superview] convertRect:frame fromView:superview];
-		if (CGRectEqualToRect(newFrame, CGRectZero)) {
-			break;
-		}
-		frame = newFrame;
-				
-		superview = [superview superview];
-	}
-	
-	return frame;
+	return [ self.sourceView convertRect: self.sourceView.bounds toView: self.sourceViewController.view ];
 }
 
 - (CGRect)fullScreenRect {
@@ -286,7 +271,7 @@
 		[srcViewController addChildViewController:[self destinationViewController]];
 		[[self destinationViewController] didMoveToParentViewController:srcViewController];
 		
-		destFrame = [self rectAtCenterOfRect:[self fullScreenRect] withSize:[self destinationSize]];
+		destFrame = [self rectAtCenterOfRect:[[srcViewController view] bounds] withSize:[self destinationSize]];
 		
 		[[[self destinationViewController] view] setFrame:destFrame];
 		[[[self destinationViewController] view] setAutoresizingMask:UIViewAutoresizingNone];
