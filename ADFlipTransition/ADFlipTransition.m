@@ -37,7 +37,7 @@
 @property (nonatomic) UIView *sourceView;
 @property (nonatomic) UIImage *sourceImage;
 
-@property (nonatomic, weak) UIViewController *destinationViewController;
+@property (nonatomic, strong) UIViewController *destinationViewController;
 @property (nonatomic) CGSize destinationSize;
 @property (nonatomic) UIImage *destinationImage;
 
